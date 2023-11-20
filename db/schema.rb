@@ -10,9 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_20_075752) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_20_083352) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.integer "volume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tosses", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "trash_bin_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_tosses_on_item_id"
+    t.index ["trash_bin_id"], name: "index_tosses_on_trash_bin_id"
+    t.index ["user_id"], name: "index_tosses_on_user_id"
+  end
+
+  create_table "trash_bins", force: :cascade do |t|
+    t.string "category"
+    t.integer "capacity"
+    t.bigint "place_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_trash_bins_on_place_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +61,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_075752) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tosses", "items"
+  add_foreign_key "tosses", "trash_bins"
+  add_foreign_key "tosses", "users"
+  add_foreign_key "trash_bins", "places"
 end

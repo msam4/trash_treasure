@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
   def index
-    @bins = Bin.all
+    @bins = TrashBin.all
 
     @markers = @bins.geocoded.map do |bin|
       {

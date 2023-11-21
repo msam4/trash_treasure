@@ -1,3 +1,4 @@
 class ApplicationController < ActionController::Base
-  #before_action :authenticate_user!
+  # Uncomment below when the seeds is merged.
+  # before_action :authenticate_user!
 end

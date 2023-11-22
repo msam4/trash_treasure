@@ -1,11 +1,12 @@
 class PlacesController < ApplicationController
   def index
-    @bins = TrashBin.all
+    @places = Place.all
 
-    @markers = @bins.geocoded.map do |bin|
+    @markers = @places.geocoded.map do |place|
       {
-        lat: bin.latitude,
-        lng: bin.longitude
+        lat: place.latitude,
+        lng: place.longitude,
+        marker_html: render_to_string(partial: "marker")
       }
     end
   end
@@ -16,5 +17,11 @@ class PlacesController < ApplicationController
   def filter
     @places = []
     @trash_bins = []
+  end
+
+  private
+
+  def bin_survey_params
+    params.require(:bin_survey).permit(:full, :trash_type)
   end
 end

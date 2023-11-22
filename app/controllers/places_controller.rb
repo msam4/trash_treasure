@@ -1,8 +1,8 @@
 class PlacesController < ApplicationController
   def index
-    @bins = TrashBin.all
+    @places = Place.all
 
-    @markers = @bins.geocoded.map do |bin|
+    @markers = @places.geocoded.map do |bin|
       {
         lat: bin.latitude,
         lng: bin.longitude
@@ -17,4 +17,10 @@ class PlacesController < ApplicationController
     @places = []
     @trash_bins = []
   end
+
+  def show
+    @place = Place.find(params[:id])
+    @bins = @place.trash_bins
+  end
+
 end

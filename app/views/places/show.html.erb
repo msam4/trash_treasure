@@ -1,1 +1,34 @@
 <!-- app/views/places/show.html.erb -->
+<div class="container">
+  <div class="card bg-white ">
+    <h1 class="text-center" style="font-size:48px;">
+      <strong><u>
+          <%=@place.name %>
+        </strong></u>
+    </h1>
+    <div class ="row m-2">
+      <h2 class="card-subtitle m-2 text-muted">Type:</h2>
+      <% @bins.each do |bin|%>
+        <% cate = bin.category %>
+        <%= image_tag "pet_bottle", style: 'width: 15%;' if cate == "PET bottle" %>
+        <%= image_tag "can",style: 'width: 15%;' if cate == "can"  %>
+        <%= image_tag "glass",style: 'width: 15%;' if cate == "glass"  %>
+        <%= image_tag "burnables", style: 'width: 15%;' if cate == "burnables"  %>
+        <%= image_tag "non_burnables",style: 'width: 15%;' if cate == "non-burnables"  %>
+        <%= image_tag "paper", style: 'width: 15%;' if cate == "paper"  %>
+        <%= image_tag "plastic", style: 'width: 15%;' if cate == "plastic"  %>
+      <% end %>
+    </div>
+    <div class="card-body m-2">
+      <% @place.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill %>
+      <% end %>
+    </div>
+    <div class="card-text m-4">
+      <h3>
+        <%=@place.description %>
+      </h3>
+    </div>
+    <a class="btn btn-flat m-3 p-4 btn-lg" href="#"><i class="fa-solid fa-arrow-right"></i> Get Direction</a>
+  </div>
+</div>

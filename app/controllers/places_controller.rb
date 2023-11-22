@@ -21,7 +21,7 @@ class PlacesController < ApplicationController
       @bins = TrashBin.all
     end
 
-    @markers = @places.geocoded.map do |bin|
+    @markers = @bins.geocoded.map do |bin|
       {
         lat: bin.latitude,
         lng: bin.longitude,

@@ -20,13 +20,14 @@ class PlacesController < ApplicationController
     else
       @bins = TrashBin.all
     end
-
-    @markers = @bins.geocoded.map do |bin|
-      {
-        lat: bin.latitude,
-        lng: bin.longitude,
-        marker_html: render_to_string(partial: "marker")
-      }
+    @markers = []
+    @bins.each do |bin|
+      @markers <<
+        {
+          lat: bin.place.latitude,
+          lng: bin.place.longitude,
+          marker_html: render_to_string(partial: "marker")
+        }
     end
   end
 

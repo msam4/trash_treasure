@@ -11,6 +11,7 @@
 require "open-uri"
 puts "Destroying all data"
 
+Toss.destroy_all
 Item.destroy_all
 Place.destroy_all
 TrashBin.destroy_all

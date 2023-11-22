@@ -1,7 +1,7 @@
 <!-- app/views/places/show.html.erb -->
 <div class="container">
   <div class="overflow-auto bg-white">
-    <a href="?">Add?</a>
+    <%= link_to 'Add New Bin',new_place_trash_bin_path(@place) %>
     <a href="/places"><i class="fa-solid fa-arrow-left" style="font-size:40px;margin: 10px;"></i></a>
     <h1 class="text-center p-1" style="font-size:48px;">
       <strong><u>

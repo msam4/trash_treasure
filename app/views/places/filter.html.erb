@@ -3,9 +3,19 @@
     <div class="col-12 col-sm-10 col-md-8 col-lg-6">
       <h1>What are you looking for? <i class="fa-solid fa-magnifying-glass-location"></i></h1>
       <br>
-      <%= simple_form_for :filter, url: places_path, method: "GET" do |f| %>
-        <%= f.collection_check_boxes :options, [[true, 'Yes'], [false, 'No']], :first, :last %>
-        <%= f.button :submit, "Search", class: "btn btn-primary" %>
+      <%= simple_form_for :filter,
+                          url: places_path,
+                          method: "GET",
+                          collection_wrapper_tag: 'div',
+                          collection_wrapper_class: 'category-wrapper' do |f| %>
+        <%= f.input :category,
+                    as: :check_boxes,
+                    collection_wrapper_tag: 'div',
+                    collection_wrapper_class: 'category-wrapper',
+                    item_wrapper_class: 'category-item',
+                    input_html: {class: 'category-selector'},
+                    collection: Item::CATEGORY %>
+        <%= f.button :submit, "Search", class: "btn btn-flat" %>
       <% end %>
     </div>
     <a class="btn btn-flat" href="/places">Go to index page</a>

@@ -3,5 +3,8 @@ class TrashBin < ApplicationRecord
 
   has_many :tosses
 
-  validates :category, presence: true, inclusion: Item::CATEGORY
+  geocoded_by :address
+
+  validates :category, presence: true, inclusion: { in: Item::CATEGORY }
+  after_validation :geocode
 end

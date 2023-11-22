@@ -1,0 +1,138 @@
+.category-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  flex: 0 0 30%;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 30px;  // Change here if you want to resize the image
+  margin: 15px;
+  text-indent: -9999px;   // This line and below makes the text out of screen
+  white-space: nowrap;
+  overflow: hidden;
+  // font-size: 12px;
+  // text-align: left;
+}
+
+.category-selector:checked + label {
+  color: white !important;
+}
+
+// PET Bottle
+
+#filter_category_pet_bottle_png + label {
+  background-image: asset-url("pet_bottle.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#filter_category_pet_bottle_png:checked + label {
+  height: 85%;
+  // Might need to add some kind of shadow on the image to show it is selected?
+}
+
+// *************************************************
+
+// Can
+
+#filter_category_can_png + label {
+  background-image: asset-url("can.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#filter_category_can_png:checked + label {
+  height: 85%;
+}
+
+// *************************************************
+
+// Glass
+
+#filter_category_glass_png + label {
+  background-image: asset-url("glass.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#filter_category_glass_png:checked + label {
+  height: 85%;
+}
+
+// *************************************************
+
+// Burnables
+
+#filter_category_burnables_png + label {
+  background-image: asset-url("burnables.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#filter_category_burnables_png:checked + label {
+  height: 85%;
+}
+
+// *************************************************
+
+// Non-burnables
+
+#filter_category_non_burnables_png + label {
+  background-image: asset-url("non_burnables.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#filter_category_non_burnables_png:checked + label {
+  height: 85%;
+}
+
+// *************************************************
+
+// Paper
+
+#filter_category_paper_png + label {
+  background-image: asset-url("paper.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#filter_category_paper_png:checked + label {
+  height: 85%;
+}
+
+// *************************************************
+
+// Plastic
+
+#filter_category_plastic_png + label {
+  background-image: asset-url("plastic.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#filter_category_plastic_png:checked + label {
+  height: 85%;
+}
+
+// *************************************************

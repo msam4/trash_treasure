@@ -1,1 +1,38 @@
 <!-- app/views/places/show.html.erb -->
+<div class="container">
+  <div class="overflow-auto bg-white">
+    <%= link_to 'Add New Bin',new_place_trash_bin_path(@place) %>
+    <a href="/places"><i class="fa-solid fa-arrow-left" style="font-size:40px;margin: 10px;"></i></a>
+    <h1 class="text-center p-1" style="font-size:48px;">
+      <strong><u>
+          <%=@place.name %>
+        </strong></u>
+    </h1>
+    <div class ="row justify-content-center m-2">
+      <% @bins.each do |bin|%>
+        <% cate = bin.category %>
+        <%= image_tag "pet_bottle", style: 'width: 20%;' if cate == "PET bottle" %>
+        <%= image_tag "can",style: 'width: 20%;' if cate == "can"  %>
+        <%= image_tag "glass",style: 'width: 20%;' if cate == "glass"  %>
+        <%= image_tag "burnables", style: 'width: 20%;' if cate == "burnables"  %>
+        <%= image_tag "non_burnables",style: 'width: 20%;' if cate == "non-burnables"  %>
+        <%= image_tag "paper", style: 'width: 20%;' if cate == "paper"  %>
+        <%= image_tag "plastic", style: 'width: 20%;' if cate == "plastic"  %>
+      <% end %>
+    </div>
+    <div class="card-body p-1 mt-2">
+      <% @place.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill %>
+      <% end %>
+    </div>
+    <div class="card-text m-4">
+      <h3>
+        <%=@place.description %>
+      </h3>
+      <br>
+      <div class="row">
+        <a class="btn btn-flat btn-lg m-3 justify-content-center" style="width:90%;" href="#"><i class="fa-solid fa-arrow-right" ></i> Get Direction</a>
+      </div>
+    </div>
+  </div>
+</div>

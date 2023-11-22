@@ -30,13 +30,15 @@ class PlacesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def filter
     # Leave here in order to display the filter page
     @places = []
     @trash_bins = []
+  end
+
+  def show
+    @place = Place.find(params[:id])
+    @bins = @place.trash_bins
   end
 
   private

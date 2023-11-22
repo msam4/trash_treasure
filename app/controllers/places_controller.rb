@@ -10,9 +10,6 @@ class PlacesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def filter
     @places = []
     @trash_bins = []

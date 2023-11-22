@@ -1,0 +1,70 @@
+<div class="container" >
+  <div class="row justify-content-center">
+    <h2><strong>New Bin for <%=@place.name %></h2>
+      <h3>Please pick a icon!</h3>
+      <div class="row">
+        <div class="col">
+          <%= simple_form_for [@place, @bin] do |f| %>
+            <%= f.input :category, as: :hidden, input_html:{value: "PET bottle"} %>
+            <%= f.button :button do %>
+              <%= image_tag "pet_bottle", style: 'width: 70%;' %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col">
+          <%= simple_form_for [@place, @bin] do |f| %>
+            <%= f.input :category, as: :hidden, input_html:{value: "can"} %>
+            <%= f.button :button do %>
+              <%= image_tag "can", style: 'width: 70%;' %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col">
+          <%= simple_form_for [@place, @bin] do |f| %>
+            <%= f.input :category, as: :hidden, input_html:{value: "glass"} %>
+            <%= f.button :button do %>
+              <%= image_tag "glass", style: 'width: 70%;' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= simple_form_for [@place, @bin] do |f| %>
+            <%= f.input :category, as: :hidden, input_html:{value: "burnables"} %>
+            <%= f.button :button do %>
+              <%= image_tag "burnables", style: 'width: 70%;' %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col">
+          <%= simple_form_for [@place, @bin] do |f| %>
+            <%= f.input :category, as: :hidden, input_html:{value: "non-burnables"} %>
+            <%= f.button :button do %>
+              <%= image_tag "non_burnables", style: 'width: 70%;' %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col">
+          <%= simple_form_for [@place, @bin] do |f| %>
+            <%= f.input :category, as: :hidden, input_html:{value: "paper"} %>
+            <%= f.button :button do %>
+              <%= image_tag "paper", style: 'width: 70%;' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= simple_form_for [@place, @bin] do |f| %>
+            <%= f.input :category, as: :hidden, input_html:{value: "plastic"} %>
+            <%= f.button :button do %>
+              <%= image_tag "plastic", style: 'width: 70%;' %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+    </div>
+  </div>

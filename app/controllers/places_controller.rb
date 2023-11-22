@@ -24,7 +24,8 @@ class PlacesController < ApplicationController
     @markers = @bins.geocoded.map do |bin|
       {
         lat: bin.latitude,
-        lng: bin.longitude
+        lng: bin.longitude,
+        marker_html: render_to_string(partial: "marker")
       }
     end
   end
@@ -36,5 +37,11 @@ class PlacesController < ApplicationController
     # Leave here in order to display the filter page
     @places = []
     @trash_bins = []
+  end
+
+  private
+
+  def bin_survey_params
+    params.require(:bin_survey).permit(:full, :trash_type)
   end
 end

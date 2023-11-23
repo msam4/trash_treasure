@@ -55,7 +55,9 @@ class PlacesController < ApplicationController
       redirect_to root_path, notice: "Bin update recorded successfully!"
     else
       render :update_form, status: :unprocessable_entity
-      
+    end
+  end
+    
   def new
     @place = Place.new
   end

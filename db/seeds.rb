@@ -7,7 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
+require "json"
 require "open-uri"
 puts "Destroying all data"
 
@@ -99,7 +99,6 @@ puts "item7 -non-burnables batteries created"
 
 
 ###
-
 puts "creating places"
 
 place1 = Place.create!(
@@ -297,4 +296,179 @@ toss4 = Toss.create!(
   item: item3
 )
 
-puts "Seeding finished"
+puts "Seeding with Photos finished"
+
+puts "Now, the real bins -paper"
+
+filepath = File.join(Rails.root,'db','recycling.json')
+data = JSON.parse(File.read(filepath))
+
+mapbox_token = "pk.eyJ1Ijoic2dna2R1a2UiLCJhIjoiY2xvNTVpamMxMDZ1bjJ2bng4YTJmeHgxZCJ9.UdCeZ5cXHGpJTyP5XeaPFw"
+
+data["features"].each do |feature|
+  next unless feature["properties"]["recycling:paper"]
+
+  longitude = feature["geometry"]["coordinates"][0]
+  latitude = feature["geometry"]["coordinates"][1]
+
+  url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{longitude},#{latitude}.json?access_token=#{mapbox_token}"
+
+  mapbox_response = URI.open(url).read
+  mapbox_data = JSON.parse(mapbox_response)
+
+  address = mapbox_data["features"][0]["place_name"]
+  name = address.split(", ", 2).first
+
+  newpaperplace = Place.create!(
+    name: name,
+    longitude: longitude,
+    latitude:  latitude,
+    description: address
+  )
+
+  paperbin = TrashBin.create!(
+    category: "paper",
+    place:  newpaperplace
+  )
+
+end
+
+puts "Now, the real bins -paper finished"
+puts "Now, the real bins -cans"
+
+require "open-uri"
+
+filepath = File.join(Rails.root,'db','recycling.json')
+data = JSON.parse(File.read(filepath))
+
+mapbox_token = "pk.eyJ1Ijoic2dna2R1a2UiLCJhIjoiY2xvNTVpamMxMDZ1bjJ2bng4YTJmeHgxZCJ9.UdCeZ5cXHGpJTyP5XeaPFw"
+
+data["features"].each do |feature|
+  next unless feature["properties"]["recycling:cans"]
+
+  longitude = feature["geometry"]["coordinates"][0]
+  latitude = feature["geometry"]["coordinates"][1]
+
+  url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{longitude},#{latitude}.json?access_token=#{mapbox_token}"
+
+  mapbox_response = URI.open(url).read
+  mapbox_data = JSON.parse(mapbox_response)
+
+  address = mapbox_data["features"][0]["place_name"]
+  name = address.split(", ", 2).first
+
+  newcanplace = Place.find_or_create_by(name: name) do |p|
+    p.longitude = longitude
+    p.latitude =  latitude
+    p.description = address
+  end
+
+    canbin = TrashBin.create!(
+     category: "can",
+      place:  newcanplace)
+
+end
+
+puts "glass bin now"
+
+filepath = File.join(Rails.root,'db','recycling.json')
+data = JSON.parse(File.read(filepath))
+
+mapbox_token = "pk.eyJ1Ijoic2dna2R1a2UiLCJhIjoiY2xvNTVpamMxMDZ1bjJ2bng4YTJmeHgxZCJ9.UdCeZ5cXHGpJTyP5XeaPFw"
+
+data["features"].each do |feature|
+  next unless feature["properties"]["recycling:glass_bottles"]
+
+  longitude = feature["geometry"]["coordinates"][0]
+  latitude = feature["geometry"]["coordinates"][1]
+
+  url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{longitude},#{latitude}.json?access_token=#{mapbox_token}"
+
+  mapbox_response = URI.open(url).read
+  mapbox_data = JSON.parse(mapbox_response)
+
+  address = mapbox_data["features"][0]["place_name"]
+  name = address.split(", ", 2).first
+
+  newglassplace = Place.find_or_create_by(name: name) do |p|
+    p.longitude = longitude
+    p.latitude =  latitude
+    p.description = address
+  end
+
+  glassbin = TrashBin.create!(
+   category: "glass",
+  place:  newglassplace
+  )
+end
+
+puts "plastic bottle bin now"
+
+filepath = File.join(Rails.root,'db','recycling.json')
+data = JSON.parse(File.read(filepath))
+
+
+mapbox_token = "pk.eyJ1Ijoic2dna2R1a2UiLCJhIjoiY2xvNTVpamMxMDZ1bjJ2bng4YTJmeHgxZCJ9.UdCeZ5cXHGpJTyP5XeaPFw"
+
+data["features"].each do |feature|
+  next unless feature["properties"]["recycling:plastic_bottles"] ||
+             feature["properties"]["recycling:PET"]
+
+  longitude = feature["geometry"]["coordinates"][0]
+  latitude = feature["geometry"]["coordinates"][1]
+
+  url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{longitude},#{latitude}.json?access_token=#{mapbox_token}"
+
+  mapbox_response = URI.open(url).read
+  mapbox_data = JSON.parse(mapbox_response)
+
+  address = mapbox_data["features"][0]["place_name"]
+  name = address.split(", ", 2).first
+
+  newbottleplace = Place.find_or_create_by(name: name) do |p|
+    p.longitude = longitude
+    p.latitude =  latitude
+    p.description = address
+  end
+
+  glassbin = TrashBin.create!(
+   category: "PET bottle",
+    place:  newbottleplace
+  )
+end
+
+
+filepath = File.join(Rails.root,'db','recycling.json')
+data = JSON.parse(File.read(filepath))
+
+
+mapbox_token = "pk.eyJ1Ijoic2dna2R1a2UiLCJhIjoiY2xvNTVpamMxMDZ1bjJ2bng4YTJmeHgxZCJ9.UdCeZ5cXHGpJTyP5XeaPFw"
+
+data["features"].each do |feature|
+  next unless feature["properties"]["recycling:plastic"] || feature["properties"]["recycling:plastic_packaging"]
+
+
+  longitude = feature["geometry"]["coordinates"][0]
+  latitude = feature["geometry"]["coordinates"][1]
+
+  url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{longitude},#{latitude}.json?access_token=#{mapbox_token}"
+
+  mapbox_response = URI.open(url).read
+  mapbox_data = JSON.parse(mapbox_response)
+
+  address = mapbox_data["features"][0]["place_name"]
+  name = address.split(", ", 2).first
+
+  newplasticplace = Place.find_or_create_by(name: name) do |p|
+    p.longitude = longitude
+    p.latitude =  latitude
+    p.description = address
+  end
+
+  glassbin = TrashBin.create!(
+   category: "plastic",
+    place:  newplasticplace
+  )
+end
+
+puts "Now, the real bins seeds finished "

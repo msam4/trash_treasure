@@ -55,7 +55,7 @@ export default class extends Controller {
         routePadding: 50,
         controls: {
           inputs: false,
-          instructions: true
+          instructions: false
         }
       })
     this.map.addControl(

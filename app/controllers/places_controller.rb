@@ -10,22 +10,19 @@ class PlacesController < ApplicationController
         key = Item::CATEGORY.key(category)
         key if key
       end
+      @places = Place.joins(:trash_bins).where(trash_bins: { category: checked })
       #After the checked example if you filtered only PET bottle and can
       # ["PET bottle", "can"]
-      @bins = []
-      checked.each do |check|
-        checked_bin = TrashBin.where(category: check).to_a
-        @bins += checked_bin
-      end
     else
-      @bins = TrashBin.all
+      @places = Place.all
     end
     @markers = []
-    @bins.each do |bin|
+    @places.each do |place|
       @markers <<
         {
-          lat: bin.place.latitude,
-          lng: bin.place.longitude,
+          lat: place.latitude,
+          lng: place.longitude,
+          info_window_html: render_to_string(partial: "info_window", locals: {place: place}),
           marker_html: render_to_string(partial: "marker")
         }
     end

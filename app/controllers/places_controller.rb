@@ -42,9 +42,26 @@ class PlacesController < ApplicationController
     @bins = @place.trash_bins
   end
 
+  def new
+    @place = Place.new
+  end
+
+  def create
+    @place = Place.new(place_params)
+    if @place.save
+      redirect_to place_path(@place)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def bin_survey_params
     params.require(:bin_survey).permit(:full, :trash_type)
+  end
+
+  def place_params
+    params.require(:place).permit(:name, :description, :longitude, :latitude, photos: [])
   end
 end

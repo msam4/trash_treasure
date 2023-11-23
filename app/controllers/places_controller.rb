@@ -42,9 +42,28 @@ class PlacesController < ApplicationController
     @bins = @place.trash_bins
   end
 
+  def update_form
+    @place = Place.find(params[:id])
+    @bin = TrashBin.new
+  end
+
+  def update
+    @place = Place.find(params[:id])
+    @bin = TrashBin.find_or_initialize_by(place: @place)
+
+    # Update is_present based on the button value
+    @bin.is_present = params[:trash_bin][:is_present] == 'true'
+
+    if @bin.save
+      redirect_to root_path, notice: "Bin update recorded successfully!"
+    else
+      render :update_form, status: :unprocessable_entity
+    end
+  end
+
   private
 
-  def bin_survey_params
-    params.require(:bin_survey).permit(:full, :trash_type)
+  def bin_update_params
+    params.require(:trash_bin).permit(:is_present, :category)
   end
 end

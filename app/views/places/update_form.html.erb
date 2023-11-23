@@ -1,0 +1,19 @@
+<div class="container mx-auto">
+  <h1 class="text-center"><strong>You've arrived!</strong></h1>
+  <%= simple_form_for [@place, @bin], url: update_form_place_path(@place), method: :post, html: { class: 'text-center' } do |f| %>
+    <div class="row justify-content-center">
+      <div class="col-md-2">
+        <div class="row">
+          <div class="text-center">
+            <p><strong>Is the bin there?</strong></p>
+          </div>
+          <div class="text-center">
+            <%= f.hidden_field :is_present, value: 'false' %>
+            <%= f.button :button, 'Yes', type: 'submit', name: 'trash_bin[is_present]', value: 'true', class: 'btn-flat' %>
+            <%= f.button :button, 'No', type: 'submit', name: 'trash_bin[is_present]', value: 'false', class: 'btn-flat' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

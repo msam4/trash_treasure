@@ -10,22 +10,19 @@ class PlacesController < ApplicationController
         key = Item::CATEGORY.key(category)
         key if key
       end
+      @places = Place.joins(:trash_bins).where(trash_bins: { category: checked })
       #After the checked example if you filtered only PET bottle and can
       # ["PET bottle", "can"]
-      @bins = []
-      checked.each do |check|
-        checked_bin = TrashBin.where(category: check).to_a
-        @bins += checked_bin
-      end
     else
-      @bins = TrashBin.all
+      @places = Place.all
     end
     @markers = []
-    @bins.each do |bin|
+    @places.each do |place|
       @markers <<
         {
-          lat: bin.place.latitude,
-          lng: bin.place.longitude,
+          lat: place.latitude,
+          lng: place.longitude,
+          info_window_html: render_to_string(partial: "info_window", locals: {place: place}),
           marker_html: render_to_string(partial: "marker")
         }
     end
@@ -58,6 +55,17 @@ class PlacesController < ApplicationController
       redirect_to root_path, notice: "Bin update recorded successfully!"
     else
       render :update_form, status: :unprocessable_entity
+      
+  def new
+    @place = Place.new
+  end
+
+  def create
+    @place = Place.new(place_params)
+    if @place.save
+      redirect_to place_path(@place)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -65,5 +73,9 @@ class PlacesController < ApplicationController
 
   def bin_update_params
     params.require(:trash_bin).permit(:is_present, :category)
+  end
+
+  def place_params
+    params.require(:place).permit(:name, :description, :longitude, :latitude, photos: [])
   end
 end

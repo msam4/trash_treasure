@@ -1,0 +1,113 @@
+Name: 羽田空港第2ターミナル
+Longitude: 139.7875556
+Latitude: 35.5516348
+Address: 出発ロビー, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル
+Longitude: 139.7876494
+Latitude: 35.5514901
+Address: 銀座 木屋, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル
+Longitude: 139.7877643
+Latitude: 35.5513195
+Address: 門左衛門, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル
+Longitude: 139.787864
+Latitude: 35.5511839
+Address: Ggg Cafe, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル
+Longitude: 139.7879485
+Latitude: 35.5510601
+Address: Ggg Cafe, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル
+Longitude: 139.7880789
+Latitude: 35.5508975
+Address: 餃子とタンメン 天, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル
+Longitude: 139.7881556
+Latitude: 35.5507837
+Address: よーじや, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル
+Longitude: 139.7882587
+Latitude: 35.5506243
+Address: Doctor Belee, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル
+Longitude: 139.788346
+Latitude: 35.5504953
+Address: ヤマト運輸 羽田空港第１ターミナルセンター, 羽田空港3-3-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル
+Longitude: 139.7884279
+Latitude: 35.5503785
+Address: 羽田空港第2ターミナル 降車停留所, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル
+Longitude: 139.7885235
+Latitude: 35.5502516
+Address: ミセス イスタンブール (Mrs. Istanbul), 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル
+Longitude: 139.7886284
+Latitude: 35.550104
+Address: 元祖寿司, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル
+Longitude: 139.7887508
+Latitude: 35.549936
+Address: ディスカバリーミュージアム Discovery Museum, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: サマーランド
+Longitude: 139.2776951
+Latitude: 35.7177328
+Address: 東京サマーランド (Summerland Water Adventure), 上代継600, あきる野市, Tokyo Prefecture 197-0832, Japan
+➜  db git:(createnewplace) ✗ ruby haneda.rb
+Name: 出発ロビー
+Longitude: 139.7875556
+Latitude: 35.5516348
+Description: 出発ロビー, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 銀座 木屋
+Longitude: 139.7876494
+Latitude: 35.5514901
+Description: 銀座 木屋, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 門左衛門
+Longitude: 139.7877643
+Latitude: 35.5513195
+Description: 門左衛門, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: Ggg Cafe
+Longitude: 139.787864
+Latitude: 35.5511839
+Description: Ggg Cafe, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: Ggg Cafe
+Longitude: 139.7879485
+Latitude: 35.5510601
+Description: Ggg Cafe, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 餃子とタンメン 天
+Longitude: 139.7880789
+Latitude: 35.5508975
+Description: 餃子とタンメン 天, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: よーじや
+Longitude: 139.7881556
+Latitude: 35.5507837
+Description: よーじや, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: Doctor Belee
+Longitude: 139.7882587
+Latitude: 35.5506243
+Description: Doctor Belee, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: ヤマト運輸 羽田空港第１ターミナルセンター
+Longitude: 139.788346
+Latitude: 35.5504953
+Description: ヤマト運輸 羽田空港第１ターミナルセンター, 羽田空港3-3-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 羽田空港第2ターミナル 降車停留所
+Longitude: 139.7884279
+Latitude: 35.5503785
+Description: 羽田空港第2ターミナル 降車停留所, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: ミセス イスタンブール (Mrs. Istanbul)
+Longitude: 139.7885235
+Latitude: 35.5502516
+Description: ミセス イスタンブール (Mrs. Istanbul), 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 元祖寿司
+Longitude: 139.7886284
+Latitude: 35.550104
+Description: 元祖寿司, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: ディスカバリーミュージアム Discovery Museum
+Longitude: 139.7887508
+Latitude: 35.549936
+Description: ディスカバリーミュージアム Discovery Museum, 羽田空港3-4-2, 東京都, Tokyo Prefecture 144-0041, Japan
+Name: 東京サマーランド (Summerland Water Adventure)
+Longitude: 139.2776951
+Latitude: 35.7177328
+Description: 東京サマーランド (Summerland Water Adventure), 上代継600, あきる野市, Tokyo Prefecture 197-0832, Japan

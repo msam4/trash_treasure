@@ -38,11 +38,12 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  filter: grayscale(100%);
 }
 
 #filter_category_pet_bottle_png:checked + label {
   height: 85%;
-  // Might need to add some kind of shadow on the image to show it is selected?
+  filter: none;
 }
 
 // *************************************************
@@ -54,10 +55,12 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  filter: grayscale(100%);
 }
 
 #filter_category_can_png:checked + label {
   height: 85%;
+  filter: none;
 }
 
 // *************************************************
@@ -69,10 +72,12 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  filter: grayscale(100%);
 }
 
 #filter_category_glass_png:checked + label {
   height: 85%;
+  filter: none;
 }
 
 // *************************************************
@@ -84,10 +89,12 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  filter: grayscale(100%);
 }
 
 #filter_category_burnables_png:checked + label {
   height: 85%;
+  filter: none;
 }
 
 // *************************************************
@@ -99,10 +106,12 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  filter: grayscale(100%);
 }
 
 #filter_category_non_burnables_png:checked + label {
   height: 85%;
+  filter: none;
 }
 
 // *************************************************
@@ -114,10 +123,12 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  filter: grayscale(100%);
 }
 
 #filter_category_paper_png:checked + label {
   height: 85%;
+  filter: none;
 }
 
 // *************************************************
@@ -129,10 +140,12 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  filter: grayscale(100%);
 }
 
 #filter_category_plastic_png:checked + label {
   height: 85%;
+  filter: none;
 }
 
 // *************************************************

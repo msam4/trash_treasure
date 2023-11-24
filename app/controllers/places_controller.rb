@@ -42,7 +42,8 @@ class PlacesController < ApplicationController
 
   def update_form
     @place = Place.find(params[:id])
-    @bin = TrashBin.new
+    @bin = TrashBin.find_by(id: params[:bin_id])
+    @bin ||= TrashBin.new
   end
 
   def update

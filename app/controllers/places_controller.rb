@@ -1,8 +1,9 @@
 class PlacesController < ApplicationController
   def index
     categories = params[:filter][:category]
+    categories.reject! { |category| category.empty? }
 
-    if categories
+    if categories.any?
       # filter logic
       # Example of filtered category
       # ["", "pet_bottle.png", "can.png"]
@@ -57,7 +58,7 @@ class PlacesController < ApplicationController
       render :update_form, status: :unprocessable_entity
     end
   end
-    
+
   def new
     @place = Place.new
   end

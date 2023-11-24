@@ -1,6 +1,6 @@
 .category-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -31,6 +31,10 @@
   color: white !important;
 }
 
+legend {
+  display: none;
+}
+
 // PET Bottle
 
 #filter_category_pet_bottle_png + label {
@@ -42,7 +46,8 @@
 }
 
 #filter_category_pet_bottle_png:checked + label {
-  height: 85%;
+  // height: 85%;
+  transform: scale(1.1,1.1);
   filter: none;
 }
 
@@ -59,7 +64,7 @@
 }
 
 #filter_category_can_png:checked + label {
-  height: 85%;
+  transform: scale(1.1,1.1);
   filter: none;
 }
 
@@ -76,7 +81,7 @@
 }
 
 #filter_category_glass_png:checked + label {
-  height: 85%;
+  transform: scale(1.1,1.1);
   filter: none;
 }
 
@@ -93,7 +98,7 @@
 }
 
 #filter_category_burnables_png:checked + label {
-  height: 85%;
+  transform: scale(1.1,1.1);
   filter: none;
 }
 
@@ -110,7 +115,7 @@
 }
 
 #filter_category_non_burnables_png:checked + label {
-  height: 85%;
+  transform: scale(1.1,1.1);
   filter: none;
 }
 
@@ -127,7 +132,7 @@
 }
 
 #filter_category_paper_png:checked + label {
-  height: 85%;
+  transform: scale(1.1,1.1);
   filter: none;
 }
 
@@ -144,7 +149,7 @@
 }
 
 #filter_category_plastic_png:checked + label {
-  height: 85%;
+  transform: scale(1.1,1.1);
   filter: none;
 }
 

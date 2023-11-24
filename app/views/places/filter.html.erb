@@ -1,23 +1,25 @@
 <div class="container">
   <div class="row justify-content-center">
     <a href="/"><i class="fa-solid fa-arrow-left" style="font-size:40px;margin: 10px;"></i></a>
-    <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-      <h1>What are you looking for? <i class="fa-solid fa-magnifying-glass-location"></i></h1>
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6" style="padding: 25px;">
+      <h1 style="font-size: 26px; text-align: center;">What are you looking for? <i class="fa-solid fa-magnifying-glass-location"></i></h1>
       <br>
-      <%= simple_form_for :filter,
+      <div>
+        <%= simple_form_for :filter,
                           url: places_path,
                           method: "GET",
                           collection_wrapper_tag: 'div',
                           collection_wrapper_class: 'category-wrapper' do |f| %>
-        <%= f.input :category,
+          <%= f.input :category,
                     as: :check_boxes,
                     collection_wrapper_tag: 'div',
                     collection_wrapper_class: 'category-wrapper',
                     item_wrapper_class: 'category-item',
                     input_html: {class: 'category-selector'},
                     collection: Item::CATEGORY %>
-        <%= f.button :submit, "Search", class: "btn btn-flat" %>
-      <% end %>
+          <%= f.button :submit, "Search", class: "btn btn-flat-primary w-100" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -34,9 +34,11 @@
         <%=@place.description %>
       </h3>
       <br>
-      <div class="row justify-content-center">
-        <a class="btn btn-flat btn-lg m-3" style="width:50%;" href="/places/37/update"><i class="fa-solid fa-compass"></i></i> Get Direction</a>
+  </div>
+    <div class="row justify-content-center">
+      <a class="btn btn-flat btn-lg m-3" style="width:55%;" href="<%= update_form_place_path(@place, bin_id: @bins.first.id) %>">
+        <i class="fa-solid fa-compass"></i> Get Directions
+      </a>
     </div>
   </div>
-</div>
 </div>

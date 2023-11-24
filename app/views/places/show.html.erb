@@ -1,35 +1,33 @@
 <!-- app/views/places/show.html.erb -->
 <div class="container">
   <div class="overflow-auto bg-white">
-    <a href="#"><i class="fa-solid fa-arrow-left" style="font-size:40px;margin: 10px;"></i></a>
+    <a href=""><i class="fa-solid fa-arrow-left" style="font-size:40px;margin: 10px;"></i></a>
     <h1 class="text-center p-1" style="font-size:48px;">
       <strong><u>
           <%=@place.name %>
         </strong></u>
     </h1>
-    <div class="row justify-content-space-between m-2">
-      <div class ="row col-9">
-        <% @bins.each do |bin|%>
-          <% cate = bin.category %>
-          <%= image_tag "pet_bottle", style: 'width: 20%;' if cate == "PET bottle" %>
-          <%= image_tag "can",style: 'width: 20%;' if cate == "can"  %>
-          <%= image_tag "glass",style: 'width: 20%;' if cate == "glass"  %>
-          <%= image_tag "burnables", style: 'width: 20%;' if cate == "burnables"  %>
-          <%= image_tag "non_burnables",style: 'width: 20%;' if cate == "non-burnables"  %>
-          <%= image_tag "paper", style: 'width: 20%;' if cate == "paper"  %>
-          <%= image_tag "plastic", style: 'width: 20%;' if cate == "plastic"  %>
-        <% end %>
-      </div>
-      <div class="col-3">
-        <%= link_to 'Add New Bin',new_place_trash_bin_path(@place), class: "btn btn-flat" %>
-      </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <% @bins.each do |bin|%>
+        <% cate = bin.category %>
+        <%= image_tag "pet_bottle", style: 'width: 20%;margin:5px;' if cate == "PET bottle" %>
+        <%= image_tag "can",style: 'width: 20%;margin:5px;' if cate == "can"  %>
+        <%= image_tag "glass",style: 'width: 20%;margin:5px;' if cate == "glass"  %>
+        <%= image_tag "burnables", style: 'width: 20%;margin:5px;' if cate == "burnables"  %>
+        <%= image_tag "non_burnables",style: 'width: 20%;margin:5px;' if cate == "non-burnables"  %>
+        <%= image_tag "paper", style: 'width: 20%;margin:5px;' if cate == "paper"  %>
+        <%= image_tag "plastic", style: 'width: 20%;margin:5px;' if cate == "plastic"  %>
+      <% end %>
+      <%= link_to new_place_trash_bin_path(@place), style: 'width: 20%;margin:5px;'  do %>
+        <%= image_tag "add", class: "w-100" %>
+      <% end %>
     </div>
-    <div class="card-body justify-content-center p-1 mt-2">
+    <div class="card-body d-flex justify-content-center p-1 mt-2">
       <% @place.photos.each do |photo| %>
         <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill %>
       <% end %>
     </div>
-    <div class="card-text m-4">
+    <div class="d-flex card-text justify-content-center m-4">
       <h3>
         <%=@place.description %>
       </h3>
@@ -37,7 +35,7 @@
   </div>
     <div class="row justify-content-center">
       <a class="btn btn-flat btn-lg m-3" style="width:55%;" href="<%= update_form_place_path(@place, bin_id: @bins.first.id) %>">
-        <i class="fa-solid fa-compass"></i> Get Directions
+        <i class="fa-solid fa-compass"></i> Go
       </a>
     </div>
   </div>

@@ -1,8 +1,9 @@
 class PlacesController < ApplicationController
   def index
     categories = params[:filter][:category]
+    categories.reject! { |category| category.empty? }
 
-    if categories
+    if categories.any?
       # filter logic
       # Example of filtered category
       # ["", "pet_bottle.png", "can.png"]

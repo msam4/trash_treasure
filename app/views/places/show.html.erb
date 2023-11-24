@@ -10,13 +10,13 @@
     <div class="d-flex justify-content-center align-items-center">
       <% @bins.each do |bin|%>
         <% cate = bin.category %>
-        <%= image_tag "pet_bottle", style: 'width: 20%;margin:5px;' if cate == "PET bottle" %>
-        <%= image_tag "can",style: 'width: 20%;margin:5px;' if cate == "can"  %>
-        <%= image_tag "glass",style: 'width: 20%;margin:5px;' if cate == "glass"  %>
-        <%= image_tag "burnables", style: 'width: 20%;margin:5px;' if cate == "burnables"  %>
-        <%= image_tag "non_burnables",style: 'width: 20%;margin:5px;' if cate == "non-burnables"  %>
-        <%= image_tag "paper", style: 'width: 20%;margin:5px;' if cate == "paper"  %>
-        <%= image_tag "plastic", style: 'width: 20%;margin:5px;' if cate == "plastic"  %>
+        <%= image_tag "pet_bottle.png", style: 'width: 20%;margin:5px;' if cate == "PET bottle" %>
+        <%= image_tag "can.png",style: 'width: 20%;margin:5px;' if cate == "can"  %>
+        <%= image_tag "glass.png",style: 'width: 20%;margin:5px;' if cate == "glass"  %>
+        <%= image_tag "burnables.png", style: 'width: 20%;margin:5px;' if cate == "burnables"  %>
+        <%= image_tag "non_burnables.png",style: 'width: 20%;margin:5px;' if cate == "non-burnables"  %>
+        <%= image_tag "paper.png", style: 'width: 20%;margin:5px;' if cate == "paper"  %>
+        <%= image_tag "plastic.png", style: 'width: 20%;margin:5px;' if cate == "plastic"  %>
       <% end %>
       <%= link_to new_place_trash_bin_path(@place), style: 'width: 20%;margin:5px;'  do %>
         <%= image_tag "add", class: "w-100" %>

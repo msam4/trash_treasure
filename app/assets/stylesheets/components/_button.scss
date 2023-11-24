@@ -4,12 +4,34 @@
   --hover: #D0E7D2;
 }
 
+.btn {
+  &.primary{
+    background-color: var(--primary);
+
+    &:hover {
+      background-color: var(--hover);
+    }
+  }
+  &.secondary {
+    background-color: var(--secondary);
+
+    &:hover {
+      background-color: var(--hover);
+    }
+  }
+}
+
 .btn-flat-primary {
   color: white;
   padding: 8px 24px;
   border-radius: 50px;
   background: var(--primary);
   transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: var(--hover);
+  color: white;
 }
 
 .btn-flat-secondary {

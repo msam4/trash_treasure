@@ -8,11 +8,11 @@
             <p><strong>Is the bin there?</strong></p>
           </div>
           <div class="text-center">
-           <%= f.hidden_field :is_present, value: 'false' %>
-            <%= button_tag(type: 'submit', name: 'trash_bin[is_present]', value: 'true', class: 'btn btn-flat') do %>
+            <%= f.hidden_field :is_present, value: 'false' %>
+            <%= button_tag(type: 'submit', name: 'trash_bin[is_present]', value: 'true', class: 'btn btn-flat-primary') do %>
               <i class="fa-solid fa-check"></i>
             <% end %>
-            <%= button_tag(type: 'submit', name: 'trash_bin[is_present]', value: 'false', class: 'btn btn-flat') do %>
+            <%= button_tag(type: 'submit', name: 'trash_bin[is_present]', value: 'false', class: 'btn btn-flat-danger') do %>
               <i class="fa-solid fa-x"></i>
             <% end %>
           </div>
@@ -20,4 +20,7 @@
       </div>
     </div>
   <% end %>
+  <div class="d-flex justify-content-center">
+    <%= image_tag "mascot.png", style: "width: 300px" %>
+  </div>
 </div>

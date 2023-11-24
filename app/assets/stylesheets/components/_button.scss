@@ -2,6 +2,7 @@
   --primary: #618264;
   --secondary: #B0D9B1;
   --hover: #D0E7D2;
+  --danger: #AC4425;
 }
 
 .btn {
@@ -39,6 +40,14 @@
   padding: 8px 24px;
   border-radius: 50px;
   background: var(--secondary);
+  transition: background 0.3s ease;
+}
+
+.btn-flat-danger {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  background: var(--danger);
   transition: background 0.3s ease;
 }
 

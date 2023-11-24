@@ -16,7 +16,7 @@
           <%= image_tag "plastic", style: 'width: 30%;' if cate == "plastic"  %>
         <% end %>
       </div>
-      <div class="card-body p-1 mt-2">
+      <div class="card-body p-1 mt-2 d-flex justify-content-center ">
         <% place.photos.each do |photo| %>
           <%= cl_image_tag photo.key, height: 75, width: 75, crop: :fill %>
         <% end %>

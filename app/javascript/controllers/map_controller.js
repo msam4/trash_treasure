@@ -15,8 +15,8 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
-      center: [0, 0],
-      zoom: 1,
+      center: [139.7671, 35.6812],
+      zoom: 13,
     });
 
     this.addMarkers();
@@ -67,7 +67,7 @@ export default class extends Controller {
       navigator.geolocation.getCurrentPosition((position) => {
         console.log([position.coords.longitude, position.coords.latitude])
         direction.setOrigin([position.coords.longitude, position.coords.latitude])
-        direction.setDestination([139.7043604, 35.6689704])
+        direction.setDestination([139.70811773947588, 35.634269435296645])
       });
     }
   }

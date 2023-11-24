@@ -1,28 +1,32 @@
-.btn-flat {
+:root {
+  --primary: #618264;
+  --secondary: #B0D9B1;
+  --hover: #D0E7D2;
+}
+
+.btn-flat-primary {
   color: white;
   padding: 8px 24px;
   border-radius: 50px;
-  background: #670BFF;
+  background: var(--primary);
   transition: background 0.3s ease;
 }
 
-.btn-flat:hover {
-  background: #4D04C4;
-  color: white;
-}
-
-.btn-gradient {
+.btn-flat-secondary {
   color: white;
   padding: 8px 24px;
-  border-radius: 4px;
-  font-weight: bold;
-  background: linear-gradient(#167FFB, #0F60C4);
+  border-radius: 50px;
+  background: var(--secondary);
   transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
 }
 
-.btn-gradient:hover {
-  background: linear-gradient(#147EFF, #0F67DA);
+.btn-flat-primary:active {
+  background: var(--hover);
+  color: white;
+}
+
+.btn-flat-secondary:active {
+  background: var(--hover);
   color: white;
 }
 

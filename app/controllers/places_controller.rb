@@ -18,6 +18,7 @@ class PlacesController < ApplicationController
       @places = Place.all
     end
     @markers = []
+    @places = @places.near([35.6535798, 139.7322619])
     @places.each do |place|
       @markers <<
         {

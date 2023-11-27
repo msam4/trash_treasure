@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   resources :trash_bins, only: [:destroy] do
     resources :tosses, only: [:new, :create]
   end
+
+  #vincci test
+  get "/test", to: 'pages#test'
+
 end

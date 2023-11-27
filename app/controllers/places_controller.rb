@@ -67,7 +67,7 @@ class PlacesController < ApplicationController
   def create
     @place = Place.new(place_params)
     if @place.save
-      redirect_to place_path(@place)
+      redirect_to new_place_trash_bin_path(@place), notice: "Place was successfully added."
     else
       render :new, status: :unprocessable_entity
     end

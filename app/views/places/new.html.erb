@@ -22,7 +22,7 @@
               <%= f.input :description, input_html: { data: { geolocation_target: "desInput" } }  %>
             </div>
             <div class="row">
-              <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+              <%= f.input :photos, as: :file, input_html: { accept: 'image/*', multiple: true } %>
             </div>
             <div class="row">
               <%= f.input :latitude, as: :hidden, input_html: { data: { geolocation_target: "latInput" } } %>

@@ -14,15 +14,15 @@ export default class extends Controller {
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2dna2R1a2UiLCJhIjoiY2xvNTVpamMxMDZ1bjJ2bng4YTJmeHgxZCJ9.UdCeZ5cXHGpJTyP5XeaPFw';
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      zoom: 9
+      style: 'mapbox://styles/mapbox/streets-v12',
+      zoom: 18
     });
 
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl,
       marker: false,
-      zoom: 20
+      zoom: 18
     });
 
     map.addControl(geocoder);
@@ -55,7 +55,7 @@ export default class extends Controller {
           lng: position.coords.longitude
         };
         map.setCenter(this.currentUserLocation);
-        map.setZoom(15); // Zoom closer
+        map.setZoom(18); // Zoom closer
         this.setCoordinatesAndFetchAddress(this.currentUserLocation);
 
         // Add a marker at the user's location
@@ -109,8 +109,8 @@ export default class extends Controller {
           this.nameInputTarget.value = namevalue;
           this.desInputTarget.value = desvalue;
         } else {
-          this.nameInputTarget.value = "Please fill in";
-          this.desInputTarget.value = "Please fill in";
+          this.nameInputTarget.value = "";
+          this.desInputTarget.value = "";
         }
       })
       .catch(error => {

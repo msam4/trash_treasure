@@ -8,33 +8,30 @@
         src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
 </head>
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-sm-10 col-md-8 col-lg-6" data-controller="geolocation">
-      <h1>Mark the place and bin </h1>
+  <div class="row justify-content-center mt-3">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 " data-controller="geolocation">
+      <h1 class="text-center" style="font-weight:bold;">Mark a spot</h1>
       <%= simple_form_for(@place) do |f| %>
-        <div id="map" style="width: 400px; height: 400px;"></div>
-        <div class="d-flex justify-content-between">
-          <div class="form-group">
-            <div class="row">
-              <%= f.input :name, input_html: { data: { geolocation_target: "nameInput" } } %>
+        <div class="d-flex justify-content-center">
+          <div id="map" style="width: 400px; height: 400px;"></div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="form-group" style="width: 100vh;">
+            <%= f.input :latitude, as: :hidden, input_html: { data: { geolocation_target: "latInput" } } %>
+            <%= f.input :longitude,as: :hidden, input_html: { data: { geolocation_target: "lonInput" } } %>
+            <%= f.input :name,label_html: { style: 'font-weight: bold;' } ,input_html: { data: { geolocation_target: "nameInput" } } %>
+            <br>
+            <%= f.input :description,label_html: { style: 'font-weight: bold;' } , input_html: { data: { geolocation_target: "desInput" } }  %>
+            <br>
+            <%= f.input :photos, as: :file, label_html: { style: 'font-weight: bold;' } ,input_html: { accept: 'image/*', multiple: true } %>
+            <div class="d-flex justify-content-center mt-4">
+              <%= f.submit "Send", class: "btn-flat-primary", style: "color: white" %>
             </div>
-            <div class="row">
-              <%= f.input :description, input_html: { data: { geolocation_target: "desInput" } }  %>
-            </div>
-            <div class="row">
-              <%= f.input :photos, as: :file, input_html: { accept: 'image/*', multiple: true } %>
-            </div>
-            <div class="row">
-              <%= f.input :latitude, as: :hidden, input_html: { data: { geolocation_target: "latInput" } } %>
-              <%= f.input :longitude,as: :hidden, input_html: { data: { geolocation_target: "lonInput" } } %>
-            </div>
-            <div class="row">
-              <%= f.submit "Add", class: "btn-flat-primary", style: "color: white" %>
-            <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>

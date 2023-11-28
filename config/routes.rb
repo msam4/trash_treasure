@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     member do
       get 'update', to: 'places#update_form', as: 'update_form'
       post 'update', to: 'places#update', as: 'update_place'
+
+      get "new_photo", to: "places#new_photo"
+      patch "save_photo", to: "places#save_photo"
     end
     resources :trash_bins, only: [:new, :create, :edit, :update]
   end
@@ -22,7 +25,5 @@ Rails.application.routes.draw do
     resources :tosses, only: [:new, :create]
   end
 
-  #vincci test
-  get "/test", to: 'pages#test'
 
 end

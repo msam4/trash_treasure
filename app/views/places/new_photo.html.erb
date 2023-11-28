@@ -1,0 +1,16 @@
+<div class="container">
+  <%= simple_form_for @place, url: save_photo_place_path(@place), method: :patch, html: { multipart: true } do |f| %>
+    <h2 class="text-center"> Join us!<br>
+      Snap to contribute.  </h2>
+    <div class="d-flex justify-content-center">
+      <%= image_tag "mascot.png", style: "width: 300px" %>
+    </div>
+    <h1 class="text-center" style="font-size:40px;font-weight:bold;"><%=@place.name%></h1>
+    <div class="row">
+      <%= f.input :photos, as: :file, label: false, input_html: { accept: 'image/*', multiple: true } %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <%= f.button :submit, 'Upload!', class: "btn-flat-primary", style: "color: white;" %>
+    <% end %>
+  </div>
+</div>

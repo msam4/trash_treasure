@@ -1,8 +1,9 @@
-New Trashbin view
 <div class="container" >
   <div class="row justify-content-center">
-    <h2><strong>New Bin for <%=@place.name %></h2>
-      <h3>Please pick a icon!</h3>
+    <h2 class="text-center"><strong>-New Bin-</h2>
+      <h2 class="text-left"><%=@place.name %></h2>
+      <br>
+      <h3 class="text-center">TAP the category!</h3>
       <div class="row">
         <div class="col">
           <%= simple_form_for [@place, @bin] do |f| %>

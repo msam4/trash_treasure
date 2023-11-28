@@ -65,6 +65,27 @@ class PlacesController < ApplicationController
     @place = Place.new
   end
 
+  def new_photo
+    @place = Place.find(params[:id])
+  end
+
+
+  def save_photo
+     @place = Place.find(params[:id])
+
+     # Update @place with new photos
+    if params[:place] && params[:place][:photos]
+      @place.photos.attach(params[:place][:photos])
+    end
+
+    if @place.save
+      redirect_to place_path(@place), notice: "Thank you for your contribution. The beautiful picture(s) was added"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+
   def create
     @place = Place.new(place_params)
     if @place.save

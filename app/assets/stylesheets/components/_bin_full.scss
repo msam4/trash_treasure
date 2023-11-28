@@ -1,0 +1,13 @@
+.container-bin-full {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+fieldset.trash_bin_full {
+  display: none;
+}
+
+.edit_trash_bin {
+  width: fit-content;
+  margin: 0 auto;
+}

@@ -22,28 +22,34 @@
     </div>
   <% end %>
   -->
-  <% @place.trash_bins.sort.each do |bin| %>
-    <div>
+  <h2 style="font-size: 26px; text-align: center;">Which bin is full?</h2>
+  <div class="container-bin-full">
+    <% @place.trash_bins.sort.each do |bin| %>
       <%= simple_form_for(bin,
-                        html: { data: { controller: "update-trash-bin",
-                                      update_trash_bin_target: "form" }}) do |f| %>
+                          html: { data: { controller: "update-trash-bin",
+                                        update_trash_bin_target: "form" }}) do |f| %>
         <%= f.input :full,
-                    input_html: { data: { update_trash_bin_target: "checkbox" }},
-                    label: false %>
+                      input_html: { data: { update_trash_bin_target: "checkbox" }},
+                      label: false %>
         <div data-action="click->update-trash-bin#submit">
           <% cate = bin.category %>
-          <%= image_tag "pet_bottle.png", style: 'width: 20%;margin:5px;' if cate == "PET bottle" %>
-          <%= image_tag "can.png",style: 'width: 20%;margin:5px;' if cate == "can"  %>
-          <%= image_tag "glass.png",style: 'width: 20%;margin:5px;' if cate == "glass"  %>
-          <%= image_tag "burnables.png", style: 'width: 20%;margin:5px;' if cate == "burnables"  %>
-          <%= image_tag "non_burnables.png",style: 'width: 20%;margin:5px;' if cate == "non-burnables"  %>
-          <%= image_tag "paper.png", style: 'width: 20%;margin:5px;' if cate == "paper"  %>
-          <%= image_tag "plastic.png", style: 'width: 20%;margin:5px;' if cate == "plastic"  %>
+          <%= image_tag "pet_bottle.png", style: 'margin:5px;' if cate == "PET bottle" %>
+          <%= image_tag "can.png",style: 'margin:5px;' if cate == "can"  %>
+          <%= image_tag "glass.png",style: 'margin:5px;' if cate == "glass"  %>
+          <%= image_tag "burnables.png", style: 'margin:5px;' if cate == "burnables"  %>
+          <%= image_tag "non_burnables.png",style: 'margin:5px;' if cate == "non-burnables"  %>
+          <%= image_tag "paper.png", style: 'margin:5px;' if cate == "paper"  %>
+          <%= image_tag "plastic.png", style: 'margin:5px;' if cate == "plastic"  %>
         </div>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-center">
+    <a class="btn btn-flat-primary btn-lg m-3" style="width:55%;" href="<%= root_path %>">
+      <i class="fa-solid fa-compass"></i> Homepage
+    </a>
+  </div>
   <div class="d-flex justify-content-center">
     <%= image_tag "mascot.png", style: "width: 300px" %>
   </div>

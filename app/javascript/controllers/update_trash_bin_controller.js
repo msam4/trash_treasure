@@ -26,6 +26,7 @@ export default class extends Controller {
     })
     .then(response => response.json()).then((data) => {
       console.log(data);
+      this.formTarget.style.opacity = this.checkboxTarget.checked ? 1 : .3;
       this.checkboxTarget.checked = data.checked;
     })
   }

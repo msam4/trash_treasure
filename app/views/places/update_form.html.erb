@@ -20,6 +20,13 @@
       </div>
     </div>
   <% end %>
+  <%#= raise %>
+  <% @place.trash_bins.each do |bin| %>
+    <%= simple_form_for(bin, html: { data: { controller: "update-trash-bin", action: "click->update-trash-bin#submit", update_trash_bin_target: "form" }}) do |f| %>
+      <%= f.input :full, input_html: { data: { update_trash_bin_target: "checkbox" } } %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <% end %>
+  <% end %>
   <div class="d-flex justify-content-center">
     <%= image_tag "mascot.png", style: "width: 300px" %>
   </div>

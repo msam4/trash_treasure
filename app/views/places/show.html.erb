@@ -1,7 +1,6 @@
 <!-- app/views/places/show.html.erb -->
 <div class="container">
   <div class="overflow-auto bg-white">
-    <a href=""><i class="fa-solid fa-arrow-left" style="font-size:40px;margin: 10px;"></i></a>
     <h1 class="text-center p-1" style="font-size:48px;">
       <strong><u>
           <%=@place.name %>
@@ -35,9 +34,13 @@
     </div>
     <div class="row justify-content-center">
       <% if @bins.any? %>
-        <a class="btn btn-flat-primary btn-lg m-3" style="width:55%;" href="<%= update_form_place_path(@place, bin_id: @bins.first.id) %>">
+        <a class="btn btn-flat-primary btn-lg m-3" style="width:70%;" href="<%= update_form_place_path(@place, bin_id: @bins.first.id) %>">
           <i class="fa-solid fa-compass"></i> Go
+          <%= link_to(:back, class: "btn btn-flat-primary btn-lg m-3", style: "width:70%;") do %>
+              Back to Map
+          <% end %>
         </a>
+
       <% else %>
         <a class="btn btn-flat-primary btn-lg m-3" style="width:55%;" href="<%= root_path %>">
           <i class="fa-solid fa-compass"></i> Home

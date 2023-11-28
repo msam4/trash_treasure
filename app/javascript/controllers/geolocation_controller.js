@@ -7,7 +7,15 @@ export default class extends Controller {
 
   connect() {
     console.log("Geolocation controller connected!");
+    this.showLoading();
     this.initializeMap();
+  }
+  showLoading() {
+    document.getElementById('loadingIndicator').style.display = 'block';
+  }
+
+  hideLoading() {
+    document.getElementById('loadingIndicator').style.display = 'none';
   }
 
   initializeMap() {
@@ -28,6 +36,10 @@ export default class extends Controller {
     map.addControl(geocoder);
 
     let userMarker = null;
+
+    map.on('load', () => {
+      this.hideLoading();
+    });
 
     map.on('click', e => {
       if (this.currentUserLocation) {
@@ -62,8 +74,10 @@ export default class extends Controller {
         userMarker = new mapboxgl.Marker()
           .setLngLat(this.currentUserLocation)
           .addTo(map);
+          this.hideLoading();
       }, function(error) {
         console.error("Error getting the geolocation: ", error);
+        this.hideLoading();
       });
     } else {
       console.log("Geolocation is not supported by this browser.");

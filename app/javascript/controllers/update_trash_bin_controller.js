@@ -14,7 +14,7 @@ export default class extends Controller {
     const token = this.formTarget.querySelector('[name="authenticity_token"]').value;
     const method = this.formTarget.querySelector('[name="_method"]').value;
     const data = {
-      trash_bin: { full: this.checkboxTarget.checked },
+      trash_bin: { full: !this.checkboxTarget.checked },
       authenticity_token: token,
       method: method,
     }

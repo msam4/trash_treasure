@@ -112,18 +112,16 @@ export default class extends Controller {
         minDistance = distance;
         closestMarker = [marker.lng, marker.lat];
       }
-
-
-
     });
 
-    if (minDistance > 1000) { // Adjust this distance as needed
-      alert("There are no bins nearby."); // Display an alert or handle appropriately
-      closestMarker = null; // Set to null if no nearby bins
+    if(minDistance > 10000 ){
+      alert("Please note: Waste disposal facilities are not available within 10km radius."); // Display an alert or handle appropriately
+    this.hideLoading();
+    closestMarker = [marker.lng, marker.lat];
+    ;
     }
-
-    console.log(closestMarker);
-    return closestMarker;
+      console.log(closestMarker);
+      return closestMarker;
 
   }
 

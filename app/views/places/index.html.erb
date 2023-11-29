@@ -1,3 +1,8 @@
+<% if @no_bins_nearby %>
+  <script>
+    alert('Please note: Waste disposal facilities are not available within 10km radius.');
+  </script>
+<% end %>
 <div class= "container">
   <!-- Bootstrap Spinner as the Loading Indicator -->
   <div class="text-center">
@@ -16,6 +21,7 @@
   <div id="map"
     style="width: 100%; height: 870px;"
     data-controller="map"
+    data-no-bins-nearby-value="<%= @no_bins_nearby %>"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>

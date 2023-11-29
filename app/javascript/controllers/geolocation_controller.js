@@ -24,6 +24,7 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v12?optimize=true',
+      center: [139.7671, 35.6812],
       zoom: 18
     });
 
@@ -31,15 +32,18 @@ export default class extends Controller {
       accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl,
       marker: false,
+
       zoom: 18
     });
 
-    this.map.addControl(geocoder);
+    //this.map.addControl(geocoder);
+    // this.addUserMarker();
 
     this.map.on('load', () => {
       this.hideLoading();
-      this.addUserMarker();
+
     });
+
 
     this.map.on('click', e => {
       if (this.currentUserLocation) {

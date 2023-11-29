@@ -1,51 +1,39 @@
-<head>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
-  <link rel="stylesheet"
-        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
-        type="text/css">
-</head>
-<body>
-  <div class="container">
-    <!-- Bootstrap Spinner as the Loading Indicator -->
-    <div class="text-center">
-      <div id="loadingIndicator" class="loading-style" style="display: none;">
-        <div class="spinner-grow text-primary" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-grow text-secondary" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-grow text-success" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
+<div class="container">
+  <div class="text-center">
+    <div id="loadingIndicator" class="loading-style" style="display: none;">
+      <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
-    </div>
-    <div class="row justify-content-center mt-3">
-      <div class="col-12 col-sm-10 col-md-8 col-lg-6" data-controller="geolocation">
-        <h1 class="text-center" style="font-weight:bold;">Mark a spot</h1>
-        <%= simple_form_for(@place) do |f| %>
-          <div class="d-flex justify-content-center">
-            <div id="map" style="width: 400px; height: 400px;"></div>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="form-group" style="width: 100vh;">
-              <%= f.input :latitude, as: :hidden, input_html: { data: { geolocation_target: "latInput" } } %>
-              <%= f.input :longitude, as: :hidden, input_html: { data: { geolocation_target: "lonInput" } } %>
-              <%= f.input :name, label_html: { style: 'font-weight: bold;' }, input_html: { data: { geolocation_target: "nameInput" } } %>
-              <br>
-              <%= f.input :description, label_html: { style: 'font-weight: bold;' }, input_html: { data: { geolocation_target: "desInput" } }  %>
-              <br>
-              <%= f.input :photos, as: :file, label_html: { style: 'font-weight: bold;' }, input_html: { accept: 'image/*', multiple: true } %>
-              <div class="d-flex justify-content-center mt-4">
-                <%= f.submit "Send", class: "btn-flat-primary", style: "color: white" %>
-              </div>
-            </div>
-          </div>
-        <% end %>
+      <div class="spinner-grow text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-success" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
     </div>
   </div>
-  <!-- JavaScript at the end of the body for optimized loading -->
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js' defer></script>
-  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js" defer></script>
-</body>
+  <div class="row justify-content-center mt-3">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6" data-controller="geolocation">
+      <h1 class="text-center" style="font-weight:bold;">Mark a spot</h1>
+      <%= simple_form_for(@place) do |f| %>
+        <div class="d-flex justify-content-center">
+          <div id="map" style="width: 400px; height: 400px;"></div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="form-group" style="width: 100vh;">
+            <%= f.input :latitude, as: :hidden, input_html: { data: { geolocation_target: "latInput" } } %>
+            <%= f.input :longitude, as: :hidden, input_html: { data: { geolocation_target: "lonInput" } } %>
+            <%= f.input :name, label_html: { style: 'font-weight: bold;' }, input_html: { data: { geolocation_target: "nameInput" } } %>
+            <br>
+            <%= f.input :description, label_html: { style: 'font-weight: bold;' }, input_html: { data: { geolocation_target: "desInput" } }  %>
+            <br>
+            <%= f.input :photos, as: :file, label_html: { style: 'font-weight: bold;' }, input_html: { accept: 'image/*', multiple: true } %>
+            <div class="d-flex justify-content-center mt-4">
+              <%= f.submit "Send", class: "btn-flat-primary", style: "color: white" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import mapboxgl from 'mapbox-gl'
 
 export default class extends Controller {
   static targets = ["latInput", "lonInput", "nameInput", "desInput"];
@@ -20,6 +21,11 @@ export default class extends Controller {
   }
 
   initializeMap() {
+    if (typeof mapboxgl === 'undefined') {
+      console.error('Mapbox GL JS is not loaded.');
+      return;
+    }
+
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2dna2R1a2UiLCJhIjoiY2xvNTVpamMxMDZ1bjJ2bng4YTJmeHgxZCJ9.UdCeZ5cXHGpJTyP5XeaPFw';
     this.map = new mapboxgl.Map({
       container: 'map',
@@ -28,20 +34,19 @@ export default class extends Controller {
       zoom: 13
     });
 
-    const geocoder = new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl,
-      marker: false,
+    // const geocoder = new MapboxGeocoder({
+    //   accessToken: mapboxgl.accessToken,
+    //   mapboxgl: mapboxgl,
+    //   marker: false,
 
-      zoom: 13
-    });
+    //   zoom: 13
+    // });
 
     //this.map.addControl(geocoder);
     // this.addUserMarker();
 
     this.map.on('load', () => {
       this.hideLoading();
-
     });
 
 

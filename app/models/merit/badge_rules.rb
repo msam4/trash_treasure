@@ -38,13 +38,13 @@ module Merit
       end
 
       grant_on 'tosses#create', badge: 'toss-5-trashes',
-        to: :user do
+        to: :user do |toss|
         # Add condition for arriving at 5 places
         toss.user.tosses.count >= 5
       end
 
       grant_on 'tosses#create', badge: 'toss-10-trashes',
-        to: :user do
+        to: :user do |toss|
         # Add condition for arriving at 10 places
         toss.user.tosses.count >= 10
       end
@@ -56,13 +56,13 @@ module Merit
           place.user.places.count >= 1
       end
 
-      grant_on 'places#new', badge: 'create-5-new-places',
+      grant_on 'places#create', badge: 'create-5-new-places',
         to: :user do |place|
         # Add condition for creating 5 new places
         place.user.places.count >= 5
       end
 
-      grant_on 'places#new', badge: 'create-10-new-places',
+      grant_on 'places#create', badge: 'create-10-new-places',
         to: :user do |place|
         # Add condition for creating 10 new places
         place.user.places.count >= 10

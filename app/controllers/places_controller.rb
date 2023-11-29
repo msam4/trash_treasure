@@ -70,6 +70,7 @@ class PlacesController < ApplicationController
 
   def new
     @place = Place.new
+    @place.user = current_user
   end
 
   def new_photo
@@ -95,8 +96,9 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.new(place_params)
+    @place.user = current_user
     if @place.save
-      redirect_to new_place_trash_bin_path(@place), notice: "Place was successfully added."
+      redirect_to place_path(@place), notice: "Place was successfully added."
     else
       render :new, status: :unprocessable_entity
     end

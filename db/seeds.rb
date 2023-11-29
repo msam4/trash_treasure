@@ -102,6 +102,7 @@ puts "item7 -non-burnables batteries created"
 puts "creating places"
 
 place1 = Place.create!(
+  user: User.all.sample,
   name: "Tokyo Station",
   latitude: 35.68138865387894,
   longitude: 139.76711944161775,
@@ -114,6 +115,7 @@ place1.save
 puts "place1 photo uploaded"
 
 bin1 = TrashBin.create!(
+  user: User.all.sample,
   category: "paper",
   capacity: 30,
   place: place1,
@@ -121,6 +123,7 @@ bin1 = TrashBin.create!(
 puts "trash_bin1 -paper in place1 - Tokyo Station created"
 
 bin2 = TrashBin.create!(
+  user: User.all.sample,
   category: "can",
   capacity: 30,
   place: place1,
@@ -128,6 +131,7 @@ bin2 = TrashBin.create!(
 puts "trash_bin2 -can in place1 - Tokyo Station created"
 
 bin3 = TrashBin.create!(
+  user: User.all.sample,
   category: "PET bottle",
   capacity: 30,
   place: place1,
@@ -135,6 +139,7 @@ bin3 = TrashBin.create!(
 puts "trash_bin3 -petbottle in place1 - Tokyo Station created"
 
 bin4 = TrashBin.create!(
+  user: User.all.sample,
   category: "plastic",
   capacity: 30,
   place: place1,
@@ -143,6 +148,7 @@ puts "trash_bin4 -petbottle in place1 - Tokyo Station created"
 
 ####
 place2 = Place.create!(
+  user: User.all.sample,
   name: "Osaki Station",
   latitude: 35.6218522661428,
   longitude: 139.72883214608052,
@@ -155,24 +161,28 @@ place2.save
 puts "place2 photo uploaded"
 
 bin5 = TrashBin.create!(
+  user: User.all.sample,
   category: "paper",
   capacity: 30,
   place: place2,
 )
 puts "trash_bin5 -paper in place2 - osaki Station created"
 bin6 = TrashBin.create!(
+  user: User.all.sample,
   category: "can",
   capacity: 30,
   place: place2,
 )
 puts "trash_bin6 -can in place2 - osaki Station created"
 bin7 = TrashBin.create!(
+  user: User.all.sample,
   category: "PET bottle",
   capacity: 30,
   place: place2,
 )
 puts "trash_bin7 -petbottle in place2 - osaki Station created"
 bin8 = TrashBin.create!(
+  user: User.all.sample,
   category: "plastic",
   capacity: 30,
   place: place2,
@@ -180,6 +190,7 @@ bin8 = TrashBin.create!(
 puts "trash_bin8 -petbottle in place2 - osaki Station created"
 
 place3 = Place.create!(
+  user: User.all.sample,
   name: "Meguro Station",
   latitude: 35.6340161024763,
   longitude:  139.71554439283088,
@@ -193,18 +204,21 @@ puts "place3 photo uploaded"
 
 
 bin9 = TrashBin.create!(
+  user: User.all.sample,
   category: "paper",
   capacity: 30,
   place: place3,
 )
 puts "trash_bin9 -paper in place3 -  meguro Station created"
 bin10 = TrashBin.create!(
+  user: User.all.sample,
   category: "can",
   capacity: 30,
   place: place3,
 )
 puts "trash_bin10 -can in place3 -  meguro Station created"
 bin11 = TrashBin.create!(
+  user: User.all.sample,
   category: "PET bottle",
   capacity: 30,
   place: place3,
@@ -214,6 +228,7 @@ puts "trash_bin11 -petbottle in place3 - meguro Station created"
 #####
 
 # place4 = Place.create!(
+  #user: User.all.sample,
   #name: "Le Wagon Tokyo",
   #latitude: 35.634269435296645,
   #longitude: 139.70811773947588,
@@ -241,6 +256,7 @@ puts "trash_bin11 -petbottle in place3 - meguro Station created"
 
 
 place5 = Place.create!(
+  user: User.all.sample,
   name: "Omotesando, Harajuku",
   latitude: 35.667572879331345,
   longitude: 139.70773226586482,
@@ -252,18 +268,21 @@ place5.save
 puts "place5 photo uploaded"
 
 bin14 = TrashBin.create!(
+  user: User.all.sample,
   category: "can",
   capacity: 30,
   place: place5,
 )
 puts "trash_bin14 -can in place5 - harajuku created"
 bin15 = TrashBin.create!(
+  user: User.all.sample,
   category: "PET bottle",
   capacity: 30,
   place: place5,
 )
 puts "trash_bin15 -can in place5 - harajukau created"
 bin16 = TrashBin.create!(
+  user: User.all.sample,
   category: "glass",
   capacity: 30,
   place: place5,
@@ -320,6 +339,7 @@ data["features"].each do |feature|
   name = address.split(", ", 2).first
 
   newpaperplace = Place.create!(
+    user: User.all.sample,
     name: name,
     longitude: longitude,
     latitude:  latitude,
@@ -327,6 +347,7 @@ data["features"].each do |feature|
   )
 
   paperbin = TrashBin.create!(
+    user: User.all.sample,
     category: "paper",
     place:  newpaperplace
   )
@@ -361,9 +382,11 @@ data["features"].each do |feature|
     p.longitude = longitude
     p.latitude =  latitude
     p.description = address
+    p.user = User.all.sample
   end
 
     canbin = TrashBin.create!(
+      user: User.all.sample,
      category: "can",
       place:  newcanplace)
 
@@ -394,9 +417,11 @@ data["features"].each do |feature|
     p.longitude = longitude
     p.latitude =  latitude
     p.description = address
+    p.user = User.all.sample
   end
 
   glassbin = TrashBin.create!(
+    user: User.all.sample,
    category: "glass",
   place:  newglassplace
   )
@@ -429,11 +454,13 @@ data["features"].each do |feature|
     p.longitude = longitude
     p.latitude =  latitude
     p.description = address
+    p.user = User.all.sample
   end
 
   glassbin = TrashBin.create!(
    category: "PET bottle",
-    place:  newbottleplace
+    place:  newbottleplace,
+    user: User.all.sample
   )
 end
 
@@ -463,11 +490,13 @@ data["features"].each do |feature|
     p.longitude = longitude
     p.latitude =  latitude
     p.description = address
+    p.user = User.all.sample
   end
 
   glassbin = TrashBin.create!(
    category: "plastic",
-    place:  newplasticplace
+    place:  newplasticplace,
+    user: User.all.sample
   )
 end
 

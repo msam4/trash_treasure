@@ -141,7 +141,7 @@ addMarkers() {
     });
 
     if(minDistance > 10000 ){
-      alert("Please note: Waste disposal facilities are not available within 10km radius."); // Display an alert or handle appropriately
+      alert("Please note: Trash bins are not within 10km radius of you."); // Display an alert or handle appropriately
     this.hideLoading();
     closestMarker = [marker.lng, marker.lat];
     ;

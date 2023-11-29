@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_29_041317) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_29_090929) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -103,6 +103,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_041317) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_places_on_user_id"
   end
 
   create_table "sashes", force: :cascade do |t|
@@ -128,7 +130,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_041317) do
     t.float "latitude"
     t.float "longitude"
     t.boolean "full", default: false
+    t.bigint "user_id"
     t.index ["place_id"], name: "index_trash_bins_on_place_id"
+    t.index ["user_id"], name: "index_trash_bins_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -25,7 +25,7 @@ export default class extends Controller {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v12?optimize=true',
       center: [139.7671, 35.6812],
-      zoom: 18
+      zoom: 13
     });
 
     const geocoder = new MapboxGeocoder({
@@ -33,7 +33,7 @@ export default class extends Controller {
       mapboxgl: mapboxgl,
       marker: false,
 
-      zoom: 18
+      zoom: 13
     });
 
     //this.map.addControl(geocoder);

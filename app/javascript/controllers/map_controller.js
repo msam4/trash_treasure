@@ -13,6 +13,8 @@ export default class extends Controller {
     // console.log(this.markersValue)
     mapboxgl.accessToken = this.apiKeyValue;
 
+    this.showLoading()
+
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
@@ -30,6 +32,14 @@ export default class extends Controller {
         this.addDirectionControl();
       });
     }
+  }
+
+  showLoading() {
+    document.getElementById('loadingIndicator').style.display = 'block';
+  }
+
+  hideLoading() {
+    document.getElementById('loadingIndicator').style.display = 'none';
   }
 
   addMarkers() {
@@ -70,9 +80,11 @@ export default class extends Controller {
     this.map.addControl(geolocate);
     // Set an event listener that fires
     this.map.on('load', () => {
+      this.hideLoading();
       geolocate.trigger();
        // Initialize directions
        this.addDirectionControl();
+
       });
     // when a trackuserlocationstart event occurs. This code below is the origin in renderDirection
     geolocate.on('geolocate', (position) => {

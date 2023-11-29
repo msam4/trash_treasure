@@ -1,5 +1,6 @@
 
 class TrashBinsController < ApplicationController
+  before_action :set_bin, only: :update
 
   def new
     @place = Place.find(params[:place_id])
@@ -18,6 +19,14 @@ class TrashBinsController < ApplicationController
     end
   end
 
+  def update
+    if @bin.update(update_bin_params)
+      render json:{ checked: update_bin_params[:full] }
+    else
+      redirect_to "/"
+    end
+  end
+
   private
   def set_bin
     @bin = TrashBin.find(params[:id])
@@ -25,5 +34,9 @@ class TrashBinsController < ApplicationController
 
   def bin_params
     params.require(:trash_bin).permit(:category)
+  end
+
+  def update_bin_params
+    params.require(:trash_bin).permit(:full)
   end
 end

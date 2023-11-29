@@ -1,0 +1,10 @@
+<% @bins.each do |bin|%>
+  <% cate = bin.category %>
+  <%= image_tag "pet_bottle.png", style: 'width: 20%;margin:5px;' if cate == "PET bottle" %>
+  <%= image_tag "can.png",style: 'width: 20%;margin:5px;' if cate == "can"  %>
+  <%= image_tag "glass.png",style: 'width: 20%;margin:5px;' if cate == "glass"  %>
+  <%= image_tag "burnables.png", style: 'width: 20%;margin:5px;' if cate == "burnables"  %>
+  <%= image_tag "non_burnables.png",style: 'width: 20%;margin:5px;' if cate == "non-burnables"  %>
+  <%= image_tag "paper.png", style: 'width: 20%;margin:5px;' if cate == "paper"  %>
+  <%= image_tag "plastic.png", style: 'width: 20%;margin:5px;' if cate == "plastic"  %>
+<% end %>

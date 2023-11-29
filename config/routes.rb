@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :trash_bins, only: [:new, :create, :edit, :update]
   end
 
-  resources :trash_bins, only: [:destroy] do
+  resources :trash_bins, only: [:destroy, :update] do
     resources :tosses, only: [:new, :create]
   end
 

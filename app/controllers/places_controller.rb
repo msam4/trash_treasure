@@ -43,6 +43,7 @@ class PlacesController < ApplicationController
 
   def update_form
     @place = Place.find(params[:id])
+    @toss = Toss.new
     @bin = TrashBin.find_by(id: params[:bin_id])
     @bin ||= TrashBin.new
   end
@@ -53,7 +54,6 @@ class PlacesController < ApplicationController
 
     # Update is_present based on the button value
     @bin.is_present = params[:trash_bin][:is_present] == 'true'
-
     if @bin.save
       redirect_to root_path, notice: "Bin update recorded successfully!"
     else

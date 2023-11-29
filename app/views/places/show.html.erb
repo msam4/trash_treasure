@@ -59,10 +59,9 @@
         <a class="btn btn-flat-primary btn-lg m-3" style="width:70%;" href="<%= update_form_place_path(@place, bin_id: @bins.first.id) %>">
           <i class="fa-solid fa-compass"></i> Go
           <%= link_to(:back, class: "btn btn-flat-primary btn-lg m-3", style: "width:70%;") do %>
-              Back to Map
+            Back to Map
           <% end %>
         </a>
-
       <% else %>
         <a class="btn btn-flat-primary btn-lg m-3" style="width:55%;" href="<%= root_path %>">
           <i class="fa-solid fa-compass"></i> Home

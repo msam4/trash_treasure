@@ -1,19 +1,25 @@
 <head>
-  <!-- Mapbox CSS -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
-  <!-- Mapbox JavaScript -->
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js'></script>
-  <!-- Mapbox Geocoder CSS -->
   <link rel="stylesheet"
         href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
         type="text/css">
-  <!-- Mapbox Geocoder JavaScript -->
-  <script
-        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
 </head>
 <body>
   <div class="container">
-    <div id="loadingIndicator" class="loading-style">Loading map...</div>
+    <!-- Bootstrap Spinner as the Loading Indicator -->
+    <div class="text-center">
+      <div id="loadingIndicator" class="loading-style" style="display: none;">
+        <div class="spinner-grow text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
     <div class="row justify-content-center mt-3">
       <div class="col-12 col-sm-10 col-md-8 col-lg-6" data-controller="geolocation">
         <h1 class="text-center" style="font-weight:bold;">Mark a spot</h1>
@@ -39,4 +45,7 @@
       </div>
     </div>
   </div>
+  <!-- JavaScript at the end of the body for optimized loading -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js' defer></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js" defer></script>
 </body>

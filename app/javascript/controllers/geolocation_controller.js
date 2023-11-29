@@ -1,15 +1,16 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="geolocation"
 export default class extends Controller {
   static targets = ["latInput", "lonInput", "nameInput", "desInput"];
-  currentUserLocation = null; // Store the user's current location
+  currentUserLocation = null;
+  map = null;
+  userMarker = null;
 
   connect() {
-    console.log("Geolocation controller connected!");
     this.showLoading();
     this.initializeMap();
   }
+
   showLoading() {
     document.getElementById('loadingIndicator').style.display = 'block';
   }
@@ -20,9 +21,9 @@ export default class extends Controller {
 
   initializeMap() {
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2dna2R1a2UiLCJhIjoiY2xvNTVpamMxMDZ1bjJ2bng4YTJmeHgxZCJ9.UdCeZ5cXHGpJTyP5XeaPFw';
-    const map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v12',
+      style: 'mapbox://styles/mapbox/streets-v12?optimize=true',
       zoom: 18
     });
 
@@ -33,26 +34,25 @@ export default class extends Controller {
       zoom: 18
     });
 
-    map.addControl(geocoder);
+    this.map.addControl(geocoder);
 
-    let userMarker = null;
-
-    map.on('load', () => {
+    this.map.on('load', () => {
       this.hideLoading();
+      this.addUserMarker();
     });
 
-    map.on('click', e => {
+    this.map.on('click', e => {
       if (this.currentUserLocation) {
         const distance = this.calculateDistance(this.currentUserLocation, e.lngLat);
         if (distance <= 20) {
           this.setCoordinatesAndFetchAddress(e.lngLat);
 
-          if (userMarker === null) {
-            userMarker = new mapboxgl.Marker()
+          if (this.userMarker === null) {
+            this.userMarker = new mapboxgl.Marker()
               .setLngLat(e.lngLat)
-              .addTo(map);
+              .addTo(this.map);
           } else {
-            userMarker.setLngLat(e.lngLat);
+            this.userMarker.setLngLat(e.lngLat);
           }
         } else {
           alert("You can only select a location within 20 meters of your current position.");
@@ -66,21 +66,24 @@ export default class extends Controller {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        map.setCenter(this.currentUserLocation);
-        map.setZoom(18); // Zoom closer
-        this.setCoordinatesAndFetchAddress(this.currentUserLocation);
-
-        // Add a marker at the user's location
-        userMarker = new mapboxgl.Marker()
-          .setLngLat(this.currentUserLocation)
-          .addTo(map);
-          this.hideLoading();
-      }, function(error) {
+        this.map.setCenter(this.currentUserLocation);
+        this.map.setZoom(18);
+        this.addUserMarker();
+        this.hideLoading();
+      }, (error) => {
         console.error("Error getting the geolocation: ", error);
         this.hideLoading();
-      });
+      }, { timeout: 10000 }); // Timeout for geolocation
     } else {
       console.log("Geolocation is not supported by this browser.");
+    }
+  }
+
+  addUserMarker() {
+    if (this.map.isStyleLoaded() && this.currentUserLocation && !this.userMarker) {
+      this.userMarker = new mapboxgl.Marker()
+        .setLngLat([this.currentUserLocation.lng, this.currentUserLocation.lat])
+        .addTo(this.map);
     }
   }
 
@@ -115,38 +118,9 @@ export default class extends Controller {
       .then(res => res.json())
       .then(data => {
         if (data.features && data.features.length > 0) {
-          const fulladdress = data.features[0].place_name;
-          const addressParts = fulladdress.split(", ");
-          const namevalue = data.features[0].text; // First part of the address
-          const desvalue = addressParts[1]; // Remaining parts
-
-          this.nameInputTarget.value = namevalue;
-          this.desInputTarget.value = desvalue;
-        } else {
-          this.nameInputTarget.value = "";
-          this.desInputTarget.value = "";
+          this.nameInputTarget.value = data.features[0].text;
+          this.desInputTarget.value = data.features[0].place_name;
         }
-      })
-      .catch(error => {
-        console.error("Error fetching address: ", error);
-        this.nameInputTarget.value = "Error";
-        this.desInputTarget.value = "Error";
       });
-  }
-
-  getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          this.latInputTarget.value = position.coords.latitude;
-          this.lonInputTarget.value = position.coords.longitude;
-        },
-        error => {
-          console.error("Error getting position: ", error);
-        }
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
   }
 }

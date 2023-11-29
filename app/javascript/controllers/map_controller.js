@@ -1,6 +1,5 @@
-import { Controller } from "@hotwired/stimulus"
-import mapboxgl from 'mapbox-gl'
-// import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/gl-directions';
+import { Controller } from "@hotwired/stimulus";
+import mapboxgl from 'mapbox-gl';
 
 export default class extends Controller {
   static values = {
@@ -9,7 +8,6 @@ export default class extends Controller {
   }
 
   connect() {
-    // console.log(this.markersValue)
     mapboxgl.accessToken = this.apiKeyValue;
 
     this.map = new mapboxgl.Map({
@@ -29,58 +27,85 @@ export default class extends Controller {
         this.addDirectionControl();
       });
     }
-  }
 
-  addMarkers() {
-    console.log("Add markers")
-    this.markersValue.forEach(marker => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
-
-      const customMarker = document.createElement("div");
-      customMarker.innerHTML = marker.marker_html;
-
-      new mapboxgl.Marker(customMarker)
-        .setLngLat([marker.lng, marker.lat])
-        .setPopup(popup)
-        .addTo(this.map);
+    this.map.getCanvas().addEventListener('click', () => {
+      document.querySelectorAll(".custom-popup").forEach(popup => popup.remove());
     });
   }
+
+addMarkers() {
+  console.log("Add markers")
+  this.markersValue.forEach(marker => {
+    const customMarker = document.createElement("div");
+    customMarker.innerHTML = marker.marker_html;
+
+    const coordinates = [marker.lng, marker.lat];
+
+    const popupContainer = document.createElement("div");
+    popupContainer.className = "custom-popup";
+    popupContainer.innerHTML = `
+      <div style="
+        position: fixed;
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+        background-color: white;
+        padding: 10px;
+      ">
+        <h1 style="font-size: 24px;">${marker.info_window_html}</h1>
+      </div>
+    `;
+
+    customMarker.addEventListener("click", (event) => {
+      document.querySelectorAll(".custom-popup").forEach(popup => popup.remove());
+
+      this.map.getContainer().appendChild(popupContainer);
+
+      event.stopPropagation();
+
+      this.renderDirection(this.position, coordinates);
+    });
+
+
+    new mapboxgl.Marker(customMarker)
+      .setLngLat(coordinates)
+      .addTo(this.map);
+  });
+}
 
   fitMapToMarkers() {
     console.log("Fit markers")
     const bounds = new mapboxgl.LngLatBounds();
     bounds.extend([this.position.coords.longitude, this.position.coords.latitude]);
     console.log([this.position.coords.longitude, this.position.coords.latitude]);
-    // Code below display the closest marker to the user's position
+
     bounds.extend(this.closestPlace);
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 200 });
   }
 
   trackUserLocationStart() {
     console.log("Track user")
-    // Initialize the GeolocateControl.
+
     const geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
           enableHighAccuracy: true
       },
       trackUserLocation: true
     });
-    // Add the control to the map.
+
     this.map.addControl(geolocate);
-    // Set an event listener that fires
     this.map.on('load', () => {
       geolocate.trigger();
       });
-    // when a trackuserlocationstart event occurs. This code below is the origin in renderDirection
+
     geolocate.on('geolocate', (position) => {
       console.log('A geolocate event has occurred.');
-      // This code below is the destination in renderDirection
+
       this.renderDirection(position, this.closestPlace);
     });
   }
 
   renderDirection(origin, destination) {
-    // console.log(destination)
 
     this.direction.setOrigin([origin.coords.longitude, origin.coords.latitude]);
     this.direction.setDestination(destination);

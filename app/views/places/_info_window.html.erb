@@ -12,7 +12,7 @@
       <a class="btn btn-flat-primary" style="width:40%; margin-right: 10px; font-weight: bold;" href="<%= update_form_place_path(place, bin_id: place.trash_bins.first.id) %>">
         Arrived
       </a>
-      <%= link_to place_path(place), class: "btn btn-flat-primary", style: "width:40%; margin-left: 10px; font-weight: bold;" do %>
+      <%= link_to place_path(place), class: "btn btn-flat-secondary", style: "color: #618264; border: 2px solid #618264; width:40%; margin-left: 10px; font-weight: bold;" do %>
         More Info
       <% end %>
     </div>

@@ -9,4 +9,6 @@ class TrashBin < ApplicationRecord
 
   validates :category, presence: true, inclusion: { in: Item::CATEGORY }
   # after_validation :geocode
+
+  belongs_to :user
 end

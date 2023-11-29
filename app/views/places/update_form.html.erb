@@ -1,31 +1,9 @@
 <div class="container mx-auto">
   <h1 class="text-center"><strong>You've arrived!</strong></h1>
-  <!--
-  <%= simple_form_for [@place, @bin], url: update_form_place_path(@place), method: :post, html: { class: 'text-center' } do |f| %>
-    <div class="row justify-content-center">
-      <div class="col-md-2">
-        <div class="row">
-          <div class="text-center">
-            <p><strong>Is the bin there?</strong></p>
-          </div>
-          <div class="text-center">
-            <%= f.hidden_field :is_present, value: 'false' %>
-            <%= button_tag(type: 'submit', name: 'trash_bin[is_present]', value: 'true', class: 'btn btn-flat-primary') do %>
-              <i class="fa-solid fa-check"></i>
-            <% end %>
-            <%= button_tag(type: 'submit', name: 'trash_bin[is_present]', value: 'false', class: 'btn btn-flat-danger') do %>
-              <i class="fa-solid fa-x"></i>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  -->
   <%= simple_form_for([@place, @toss]) do |f| %>
     <%= f.submit %>
   <% end %>
-  <h2 style="font-size: 26px; text-align: center;">Which bin is full?</h2>
+  <h2 style="font-size: 26px; text-align: center;">Report: Which bin is full?</h2>
   <div class="container-bin-full">
     <% @place.trash_bins.sort.each do |bin| %>
       <%= simple_form_for(bin,

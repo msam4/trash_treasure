@@ -29,6 +29,7 @@ export default class extends Controller {
         this.addMarkers();
         this.addDirectionControl();
       });
+      this.hideLoading();
     }
 
     this.map.getCanvas().addEventListener('click', () => {
@@ -144,7 +145,6 @@ addMarkers() {
       alert("Please note: Trash bins are not within 10km radius of you."); // Display an alert or handle appropriately
     this.hideLoading();
     closestMarker = [marker.lng, marker.lat];
-    ;
     }
       console.log(closestMarker);
       return closestMarker;

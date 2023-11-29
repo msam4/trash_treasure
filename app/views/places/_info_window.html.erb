@@ -1,32 +1,20 @@
-<%= link_to place_path(place),class: "no-decoration" do %>
-  <div class="container">
-    <div class="overflow-auto bg-white">
-      <h1 class="text-center p-1" style="font-size: 24px; text-decoration: none;">
-        <%= place.name %>
-      </h1>
-      <div class ="row justify-content-center m-2">
-        <% place.trash_bins.each do |bin|%>
-          <% cate = bin.category %>
-          <%= image_tag "pet_bottle.png", style: 'width: 30%;' if cate == "PET bottle" %>
-          <%= image_tag "can.png",style: 'width: 30%;' if cate == "can"  %>
-          <%= image_tag "glass.png",style: 'width: 30%;' if cate == "glass"  %>
-          <%= image_tag "burnables.png", style: 'width: 30%;' if cate == "burnables"  %>
-          <%= image_tag "non_burnables.png",style: 'width: 30%;' if cate == "non-burnables"  %>
-          <%= image_tag "paper.png", style: 'width: 30%;' if cate == "paper"  %>
-          <%= image_tag "plastic.png", style: 'width: 30%;' if cate == "plastic"  %>
-        <% end %>
-      </div>
-      <div class="card-body p-1 mt-2 d-flex justify-content-center ">
-        <% place.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 75, width: 75, crop: :fill %>
-        <% end %>
-      </div>
-      <div class="row justify-content-center">
-      <a class="btn btn-flat-primary" style="width:55%;" href="<%= update_form_place_path(place, bin_id: place.trash_bins.first.id) %>">
-        <i class="fa-solid fa-compass"></i> Go
-      </a>
+<div class="container">
+  <div class="overflow-auto bg-white">
+    <h1 class="text-center p-1" style="font-size: 36px; font-weight: bold; text-decoration: none;">
+      <%= place.name %>
+    </h1>
+    <div class="d-flex card-text justify-content-center m-4">
+      <h3>
+        <%= place.description %>
+      </h3>
     </div>
+    <div class="row justify-content-center">
+      <a class="btn btn-flat-primary" style="width:40%; margin-right: 10px; font-weight: bold;" href="<%= update_form_place_path(place, bin_id: place.trash_bins.first.id) %>">
+        Arrived
+      </a>
+      <%= link_to place_path(place), class: "btn btn-flat-primary", style: "width:40%; margin-left: 10px; font-weight: bold;" do %>
+        More Info
+      <% end %>
     </div>
   </div>
 </div>
-<% end %>

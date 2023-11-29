@@ -17,8 +17,8 @@
                     item_wrapper_class: 'category-item',
                     input_html: {class: 'category-selector'},
                     collection: Item::CATEGORY %>
-          <%= f.input :latitude,  input_html: { data: { filter_target: "latInput" } } %>
-          <%= f.input :longitude,  input_html: { data: { filter_target: "lonInput" } } %>
+          <%= f.input :latitude, as: :hidden,  input_html: { data: { filter_target: "latInput" } } %>
+          <%= f.input :longitude, as: :hidden,  input_html: { data: { filter_target: "lonInput" } } %>
           <%= f.button :submit, "Search", class: "btn btn-flat-primary w-100" %>
         <% end %>
       </div>

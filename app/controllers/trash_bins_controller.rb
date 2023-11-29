@@ -21,6 +21,7 @@ class TrashBinsController < ApplicationController
 
   def update
     if @bin.update(update_bin_params)
+      @toss = Toss.create(user: current_user, place: @bin.place)
       render json:{ checked: update_bin_params[:full] }
     else
       redirect_to "/"

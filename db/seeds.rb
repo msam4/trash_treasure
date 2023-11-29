@@ -270,31 +270,31 @@ bin16 = TrashBin.create!(
 )
 puts "trash_bin15 -can in place5 - harajuka created"
 
-puts "Toss creating"
+# puts "Toss creating"
 
-toss1 = Toss.create!(
-  user: yamada,
-  trash_bin: bin1,
-  item: item4
-)
+# toss1 = Toss.create!(
+#   user: yamada,
+#   trash_bin: bin1,
+#   item: item4
+# )
 
-toss2 = Toss.create!(
-  user: tanaka,
-  trash_bin: bin6,
-  item: item2
-)
+# toss2 = Toss.create!(
+#   user: tanaka,
+#   trash_bin: bin6,
+#   item: item2
+# )
 
-toss3 = Toss.create!(
-  user: suzuki,
-  trash_bin: bin11,
-  item: item1
-)
+# toss3 = Toss.create!(
+#   user: suzuki,
+#   trash_bin: bin11,
+#   item: item1
+# )
 
-toss4 = Toss.create!(
-  user: nagatomo,
-  trash_bin: bin16,
-  item: item3
-)
+# toss4 = Toss.create!(
+#   user: nagatomo,
+#   trash_bin: bin16,
+#   item: item3
+# )
 
 puts "Seeding with Photos finished"
 

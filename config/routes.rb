@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :places, only: [:index, :show, :new, :create] do
+    resources :tosses, only: [:create]
     member do
       get 'update', to: 'places#update_form', as: 'update_form'
       post 'update', to: 'places#update', as: 'update_place'

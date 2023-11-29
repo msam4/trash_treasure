@@ -22,6 +22,9 @@
     </div>
   <% end %>
   -->
+  <%= simple_form_for([@place, @toss]) do |f| %>
+    <%= f.submit %>
+  <% end %>
   <h2 style="font-size: 26px; text-align: center;">Which bin is full?</h2>
   <div class="container-bin-full">
     <% @place.trash_bins.sort.each do |bin| %>

@@ -17,8 +17,15 @@ class PlacesController < ApplicationController
     else
       @places = Place.all
     end
+    @places = @places.near([params[:filter][:latitude].to_f, params[:filter][:longitude].to_f], 10)
     @markers = []
-    @places = @places.near([35.6535798, 139.7322619])
+
+    @no_bins_nearby = @places.empty?
+
+    if @no_bins_nearby
+      @places = Place.all
+    end
+
     @places.each do |place|
       @markers <<
         {

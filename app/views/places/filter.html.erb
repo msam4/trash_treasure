@@ -4,7 +4,7 @@
     <div class="col-12 col-sm-10 col-md-8 col-lg-6" style="padding: 25px;">
       <h1 style="font-size: 26px; text-align: center;">What are you looking for? <i class="fa-solid fa-magnifying-glass-location"></i></h1>
       <br>
-      <div>
+      <div data-controller="filter">
         <%= simple_form_for :filter,
                           url: places_path,
                           method: "GET",
@@ -17,6 +17,8 @@
                     item_wrapper_class: 'category-item',
                     input_html: {class: 'category-selector'},
                     collection: Item::CATEGORY %>
+          <%= f.input :latitude, as: :hidden,  input_html: { data: { filter_target: "latInput" } } %>
+          <%= f.input :longitude, as: :hidden,  input_html: { data: { filter_target: "lonInput" } } %>
           <%= f.button :submit, "Search", class: "btn btn-flat-primary w-100" %>
         <% end %>
       </div>

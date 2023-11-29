@@ -114,9 +114,15 @@ export default class extends Controller {
       }
 
 
-    });
-      console.log(closestMarker);
 
+    });
+
+    if (minDistance > 1000) { // Adjust this distance as needed
+      alert("There are no bins nearby."); // Display an alert or handle appropriately
+      closestMarker = null; // Set to null if no nearby bins
+    }
+
+    console.log(closestMarker);
     return closestMarker;
 
   }

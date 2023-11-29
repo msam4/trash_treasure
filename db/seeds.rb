@@ -150,7 +150,7 @@ place2 = Place.create!(
 )
 puts "place2 - Osaki Station Station created"
 file = URI.open("https://i.ibb.co/988Vc8n/oosaki.jpg")
-place2.photos.attach(io: file, filename: "place4.png", content_type: "image/png")
+place2.photos.attach(io: file, filename: "place2.png", content_type: "image/png")
 place2.save
 puts "place2 photo uploaded"
 
@@ -213,31 +213,31 @@ puts "trash_bin11 -petbottle in place3 - meguro Station created"
 
 #####
 
-place4 = Place.create!(
-  name: "Le Wagon Tokyo",
-  latitude: 35.634269435296645,
-  longitude: 139.70811773947588,
-  description: "Vending Machines near Le Wagon",
-)
-puts "place4 - Vending Machines near Le Wagon"
-file = URI.open("https://i.ibb.co/N3315M2/lewagon.jpg")
-place4.photos.attach(io: file, filename: "place4.png", content_type: "image/png")
-place4.save
-puts "place4 photo uploaded"
+# place4 = Place.create!(
+  #name: "Le Wagon Tokyo",
+  #latitude: 35.634269435296645,
+  #longitude: 139.70811773947588,
+  #description: "Vending Machines near Le Wagon",
+# )
+# puts "place4 - Vending Machines near Le Wagon"
+# file = URI.open("https://i.ibb.co/N3315M2/lewagon.jpg")
+# place4.photos.attach(io: file, filename: "place4.png", content_type: "image/png")
+# place4.save
+# puts "place4 photo uploaded"
 
-bin12 = TrashBin.create!(
-  category: "PET bottle",
-  capacity: 30,
-  place: place4,
-)
-puts "trash_bin12 -petbottle in place4 - lewagon created"
+#bin12 = TrashBin.create!(
+  #category: "PET bottle",
+  #capacity: 30,
+  #place: place4,
+#)
+#puts "trash_bin12 -petbottle in place4 - lewagon created"
 
-bin13 = TrashBin.create!(
-  category: "PET bottle",
-  capacity: 30,
-  place: place4,
-)
-puts "trash_bin13 -petbottle in place4 - lewagon created"
+#bin13 = TrashBin.create!(
+  #category: "PET bottle",
+#   capacity: 30,
+#   place: place4,
+# )
+# puts "trash_bin13 -petbottle in place4 - lewagon created"
 
 
 place5 = Place.create!(

@@ -1,3 +1,4 @@
+
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl'
 // import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/gl-directions';
@@ -19,7 +20,7 @@ export default class extends Controller {
       zoom: 13,
     });
 
-    this.closestPlace = [this.markersValue[0].lng, this.markersValue[0].lat];
+    // this.closestPlace = [this.markersValue[0].lng, this.markersValue[0].lat];
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -70,13 +71,42 @@ export default class extends Controller {
     // Set an event listener that fires
     this.map.on('load', () => {
       geolocate.trigger();
+       // Initialize directions
+       this.addDirectionControl();
       });
     // when a trackuserlocationstart event occurs. This code below is the origin in renderDirection
     geolocate.on('geolocate', (position) => {
       console.log('A geolocate event has occurred.');
+      // Find closest marker
+      this.closestPlace = this.findClosestMarker(position);
       // This code below is the destination in renderDirection
-      this.renderDirection(position, this.closestPlace);
+      this.renderDirection(position, this.findClosestMarker(position));
     });
+  }
+
+  // Find closest marker to user's location
+  findClosestMarker(userPosition) {
+
+    let minDistance = Infinity;
+    let closestMarker = null;
+
+    this.markersValue.forEach(marker => {
+
+      const distance = this.calculateDistance( {lat: userPosition.coords.latitude, lng: userPosition.coords.longitude},
+        {lat: marker.lat, lng: marker.lng}
+      );
+
+      if(distance < minDistance){
+        minDistance = distance;
+        closestMarker = [marker.lng, marker.lat];
+      }
+
+
+    });
+      console.log(closestMarker);
+
+    return closestMarker;
+
   }
 
   renderDirection(origin, destination) {
@@ -100,6 +130,25 @@ export default class extends Controller {
       this.direction,
       'top-left'
     );
+  }
+
+
+  calculateDistance(loc1, loc2) {
+    function toRad(x) {
+      return x * Math.PI / 180;
+    }
+
+    const R = 6371; // Earth's mean radius in km
+    const dLat = toRad(loc2.lat - loc1.lat);
+    const dLon = toRad(loc2.lng - loc1.lng);
+
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(toRad(loc1.lat)) * Math.cos(toRad(loc2.lat)) *
+              Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c;
+
+    return d * 1000; // Distance in meters
   }
 
 }

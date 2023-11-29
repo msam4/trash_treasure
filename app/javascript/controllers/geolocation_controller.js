@@ -21,23 +21,10 @@ export default class extends Controller {
 
   initializeMap() {
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2dna2R1a2UiLCJhIjoiY2xvNTVpamMxMDZ1bjJ2bng4YTJmeHgxZCJ9.UdCeZ5cXHGpJTyP5XeaPFw';
-
-    // Define a blank style
-    var blankStyle = {
-      version: 8,
-      sources: {},
-      layers: [{
-        id: 'background',
-        type: 'background',
-        paint: {'background-color': '#FFFFFF'}
-      }]
-    };
-
     this.map = new mapboxgl.Map({
       container: 'map',
-      style: blankStyle,
-      zoom: 18,
-      center: [139.767125, 35.681236] // Coordinates for Tokyo Station
+      style: 'mapbox://styles/mapbox/streets-v12?optimize=true',
+      zoom: 18
     });
 
     const geocoder = new MapboxGeocoder({
@@ -52,11 +39,7 @@ export default class extends Controller {
     this.map.on('load', () => {
       this.hideLoading();
       this.addUserMarker();
-
-      // Optionally switch to 'streets-v12' style after the map loads
-      this.map.setStyle('mapbox://styles/mapbox/streets-v12?optimize=true');
     });
-
 
     this.map.on('click', e => {
       if (this.currentUserLocation) {

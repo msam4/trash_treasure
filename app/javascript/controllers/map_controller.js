@@ -59,7 +59,7 @@ export default class extends Controller {
       popupContainer.innerHTML = `
         <div style="
           position: fixed;
-          bottom: 0;
+          bottom: 40px;
           text-align: center;
           width: 100%;
           background-color: white;

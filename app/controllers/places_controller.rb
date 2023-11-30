@@ -7,24 +7,24 @@ class PlacesController < ApplicationController
       # filter logic
       # Example of filtered category
       # ["", "pet_bottle.png", "can.png"]
-      checked = categories.map do |category|
+      @checked = categories.map do |category|
         key = Item::CATEGORY.key(category)
         key if key
       end
-      @places = Place.joins(:trash_bins).where(trash_bins: { category: checked })
+      @places = Place.joins(:trash_bins).where(trash_bins: { category: @checked }).group("places.id").having("COUNT(DISTINCT places.trash_bins.category)=?",@checked.length)
+      #@places = Place.all.select{|place| @checked.all?{|category| mapped_list(place).include?(category)}}
       #After the checked example if you filtered only PET bottle and can
       # ["PET bottle", "can"]
+      if params[:filter][:latitude].present? && params[:filter][:longitude].present?
+        near_places = @places.near([params[:filter][:latitude].to_f, params[:filter][:longitude].to_f], 10)
+        @no_bins_nearby = near_places.empty?
+        @places = near_places unless @no_bins_nearby
+       end
     else
       @places = Place.all
     end
-    @places = @places.near([params[:filter][:latitude].to_f, params[:filter][:longitude].to_f], 10)
+
     @markers = []
-
-    @no_bins_nearby = @places.empty?
-
-    if @no_bins_nearby
-      @places = Place.all
-    end
 
     @places.each do |place|
       @markers <<
@@ -112,5 +112,9 @@ class PlacesController < ApplicationController
 
   def place_params
     params.require(:place).permit(:name, :description, :longitude, :latitude, photos: [])
+  end
+
+  def mapped_list(place)
+    place.trash_bins.map{|bin| bin.category}
   end
 end

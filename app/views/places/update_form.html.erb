@@ -1,6 +1,10 @@
 <div class="container mx-auto text-center">
   <h1 class="text-center"><strong>You've arrived!</strong></h1>
-  <h2 style="font-size: 26px;">Report: Which bin is full?</h2>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h2 style="font-size: 26px;">Tell us if you saw the bin is full.</h2>
   <div class="container-bin-full">
     <% @place.trash_bins.sort.each do |bin| %>
       <%= simple_form_for(bin,
@@ -11,18 +15,19 @@
                       label: false %>
         <div data-action="click->update-trash-bin#submit">
           <% cate = bin.category %>
-          <%= image_tag "pet_bottle.png", style: 'margin:5px;' if cate == "PET bottle" %>
-          <%= image_tag "can.png",style: 'margin:5px;' if cate == "can"  %>
-          <%= image_tag "glass.png",style: 'margin:5px;' if cate == "glass"  %>
-          <%= image_tag "burnables.png", style: 'margin:5px;' if cate == "burnables"  %>
-          <%= image_tag "non_burnables.png",style: 'margin:5px;' if cate == "non-burnables"  %>
-          <%= image_tag "paper.png", style: 'margin:5px;' if cate == "paper"  %>
-          <%= image_tag "plastic.png", style: 'margin:5px;' if cate == "plastic"  %>
+          <%= image_tag "pet_bottle.png", style: 'width:40%;margin:5px;' if cate == "PET bottle" %>
+          <%= image_tag "can.png",style: 'width:40%;margin:5px;' if cate == "can"  %>
+          <%= image_tag "glass.png",style: 'width:40%;margin:5px;' if cate == "glass"  %>
+          <%= image_tag "burnables.png", style: 'width:40%;margin:5px;' if cate == "burnables"  %>
+          <%= image_tag "non_burnables.png",style: 'width:40%;margin:5px;' if cate == "non-burnables"  %>
+          <%= image_tag "paper.png", style: 'width:40%;margin:5px;' if cate == "paper"  %>
+          <%= image_tag "plastic.png", style: 'width:40%;margin:5px;' if cate == "plastic"  %>
         </div>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <% end %>
     <% end %>
   </div>
+  <br>
   <div class="d-flex justify-content-center mt-3">
     <a class="btn btn-flat-primary btn ml-2" style="width:38%; margin-right: 10px;" href="<%= root_path %>">
       <i class="fa-solid fa-compass"></i> Homepage

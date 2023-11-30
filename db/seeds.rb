@@ -556,3 +556,55 @@ bin31 = TrashBin.create!(
   capacity: 30,
   place: newinburnableplace2,
 )
+
+uenostation = Place.find_or_create_by(latitude: 35.71416907756494) do |p|
+  p.name = "JR Ueno Station"
+  p.longitude = 139.7773727667071
+  p.description = "7-chōme-1-1 Ueno, Taito City, Tokyo 110-0005"
+  p.user = User.all.sample
+end
+
+bin40 = TrashBin.create!(
+  user: User.all.sample,
+  category: "burnables",
+  capacity: 30,
+  place: uenostation,
+)
+
+
+bin41 = TrashBin.create!(
+  user: User.all.sample,
+  category: "plastic",
+  capacity: 30,
+  place: uenostation,
+)
+
+bin42 = TrashBin.create!(
+  user: User.all.sample,
+  category: "paper",
+  capacity: 30,
+  place: uenostation,
+)
+
+
+bin43 = TrashBin.create!(
+  user: User.all.sample,
+  category: "PET bottle",
+  capacity: 30,
+  place: uenostation,
+)
+
+
+bin44 = TrashBin.create!(
+  user: User.all.sample,
+  category: "can",
+  capacity: 30,
+  place: uenostation,
+)
+
+bin45 = TrashBin.create!(
+  user: User.all.sample,
+  category: "glass",
+  capacity: 30,
+  place: uenostation,
+)

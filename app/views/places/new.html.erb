@@ -20,7 +20,7 @@
           <div id="map" style="width: 400px; height: 400px;"></div>
         </div>
         <div class="d-flex justify-content-center align-items-center">
-          <div class="form-group" style="width: 100vh;">
+          <div class="form-group">
             <%= f.input :latitude, as: :hidden, input_html: { data: { geolocation_target: "latInput" } } %>
             <%= f.input :longitude, as: :hidden, input_html: { data: { geolocation_target: "lonInput" } } %>
             <%= f.input :name, label_html: { style: 'font-weight: bold;' }, input_html: { data: { geolocation_target: "nameInput" } } %>
@@ -38,4 +38,3 @@
     <br>
     <br>
   </div>
-</div>

@@ -11,8 +11,10 @@
     </div>
     <div class="d-flex flex-row-reverse">
       <p class="mb-2" style="margin-right: 30px;">
-        <a href="<%= update_form_place_path(place, bin_id: place.trash_bins.first.id) %>">
-          Report <i class="fa-regular fa-message"></i></a>
+        <% if  place.trash_bins.any? %>
+          <a href="<%= update_form_place_path(place, bin_id: place.trash_bins.first.id) %>">
+            Report <i class="fa-regular fa-message"></i></a>
+        <%end%>
       </p>
       <br>
       <br>

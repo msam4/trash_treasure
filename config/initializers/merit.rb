@@ -24,28 +24,42 @@ Rails.application.reloader.to_prepare do
   badge_id = 0
   [{
     id: (badge_id = badge_id+1),
-    name: 'just-registered'
+    name: 'just-registered',
+    description: "Made an account!",
+    custom_fields: { image: "badges/just-registered.png"}
   }, {
     id: (badge_id = badge_id+1),
-    name: 'first-toss'
+    name: 'first-toss',
+    description: "You toss away your first trash!",
+    custom_fields: { image: "badges/first-toss.png" }
   }, {
     id: (badge_id = badge_id+1),
-    name: 'add-a-new-place'
+    name: 'add-a-new-place',
+    description: "You add a new place!",
+    custom_fields: { image: "badges/add-a-new-place.png" }
   }, {
     id: (badge_id = badge_id+1),
-    name: 'add-a-new-bin'
+    name: 'add-a-new-bin',
+    description: "You add a new bin!",
+    custom_fields: { image: "badges/add-new-bin.png" }
   }, {
     id: (badge_id = badge_id+1),
-    name: 'toss-5-trashes'
+    name: 'toss-5-trashes',
+    description: "You toss away 5 pieces of trash!",
+    custom_fields: { }
   }, {
     id: (badge_id = badge_id+1),
-    name: 'toss-10-trashes'
+    name: 'toss-10-trashes',
+    description: "You toss away 10 pieces of trash!",
+    custom_fields: { }
   }, {
     id: (badge_id = badge_id+1),
-    name: 'create-5-new-places'
+    name: 'add-5-new-places',
+    description: "You add 5 new places!"
   }, {
     id: (badge_id = badge_id+1),
-    name: 'create-10-new-places'
+    name: 'add-10-new-places',
+    description: "You add 10 new places!"
   }].each do |attrs|
     Merit::Badge.create! attrs
   end

@@ -56,13 +56,13 @@ module Merit
           place.user.places.count >= 1
       end
 
-      grant_on 'places#create', badge: 'create-5-new-places',
+      grant_on 'places#create', badge: 'add-5-new-places',
         to: :user do |place|
         # Add condition for creating 5 new places
         place.user.places.count >= 5
       end
 
-      grant_on 'places#create', badge: 'create-10-new-places',
+      grant_on 'places#create', badge: 'add-10-new-places',
         to: :user do |place|
         # Add condition for creating 10 new places
         place.user.places.count >= 10

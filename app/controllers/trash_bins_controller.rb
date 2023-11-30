@@ -11,6 +11,7 @@ class TrashBinsController < ApplicationController
   def create
     @place = Place.find(params[:place_id])
     @bin = TrashBin.new(bin_params)
+    @bin.user = current_user
     @bin.place = @place
     if @bin.save
       case current_user.trash_bin.count

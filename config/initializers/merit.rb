@@ -46,20 +46,22 @@ Rails.application.reloader.to_prepare do
     id: (badge_id = badge_id+1),
     name: 'Toss 5 pieces',
     description: "You toss away 5 pieces of trash!",
-    custom_fields: { }
+    custom_fields: { image: "badges/toss-5-pieces.png" }
   }, {
     id: (badge_id = badge_id+1),
     name: 'Toss 10 pieces',
     description: "You toss away 10 pieces of trash!",
-    custom_fields: { }
+    custom_fields: { image: "badges/toss-10-pieces.png" }
   }, {
     id: (badge_id = badge_id+1),
     name: 'Add 5 new places',
     description: "You add 5 new places!"
+    custom_fields: { image: "badges/add-5-new-places.png" }
   }, {
     id: (badge_id = badge_id+1),
     name: 'Add 10 new places',
     description: "You add 10 new places!"
+    custom_fields: { image: "badges/add-10-new-places.png" }
   }].each do |attrs|
     Merit::Badge.create! attrs
   end

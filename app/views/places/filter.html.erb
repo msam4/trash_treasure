@@ -19,7 +19,9 @@
                     collection: Item::CATEGORY %>
           <%= f.input :latitude, as: :hidden,  input_html: { data: { filter_target: "latInput" } } %>
           <%= f.input :longitude, as: :hidden,  input_html: { data: { filter_target: "lonInput" } } %>
-          <%= f.button :submit, "Search", class: "btn btn-flat-primary w-100" %>
+          <div class="d-grid gap-2 col-7 mx-auto">
+            <%= f.button :submit, "Search", class: "btn btn-flat-primary m-3 p-4 btn-md" %>
+          </div>
         <% end %>
       </div>
     </div>

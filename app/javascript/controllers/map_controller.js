@@ -86,16 +86,24 @@ export default class extends Controller {
           text: 'Feel free to throw away your trash now 🥳',
           icon: 'success',
           confirmButtonText: 'OK',
+          customClass: {
+            confirmButton: 'btn btn-flat-primary m-3 p-4 text-center btn-md', // Apply Bootstrap classes directly to the button
+          },
+
           didOpen: () => {
             const confirmButton = Swal.getConfirmButton();
             confirmButton.style.backgroundColor = '#618264';
             confirmButton.style.color = '#fff';
+
 
             confirmButton.addEventListener('click', () => {
               Swal.fire({
                 title: 'Toss created!',
                 icon: 'success',
                 confirmButtonText: 'OK',
+                customClass: {
+                  confirmButton: 'btn btn-flat-primary m-3 p-4 text-center btn-md', // Apply Bootstrap classes directly to the button
+                },
                 didOpen: () => {
                   const confirmButton = Swal.getConfirmButton();
                   confirmButton.style.backgroundColor = '#618264';

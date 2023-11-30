@@ -1,7 +1,7 @@
 :root {
   --primary: #618264;
   --secondary: #ffffff;
-  --hover: #D0E7D2;
+  --hover: #97cd9c;
   --danger: #AC4425;
 }
 
@@ -28,6 +28,9 @@
   border-radius: 50px;
   background: var(--primary);
   transition: background 0.3s ease;
+  width: 50%xs;
+  font-weight: bold;
+  padding-left: 10px;
 }
 
 .btn-flat:hover {
@@ -41,6 +44,9 @@
   border-radius: 50px;
   background: var(--secondary);
   transition: background 0.3s ease;
+  width: 50%vw;
+  font-weight: bold;
+  padding-left: 10px;
 }
 
 .btn-flat-danger {
@@ -49,6 +55,8 @@
   border-radius: 50px;
   background: var(--danger);
   transition: background 0.3s ease;
+  width: 50%;
+
 }
 
 .btn-flat-primary:active {

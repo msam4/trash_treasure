@@ -1,5 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl'
+import Swal from 'sweetalert2';
+window.Swal = Swal;
 // import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/gl-directions';
 
 export default class extends Controller {
@@ -87,6 +89,10 @@ export default class extends Controller {
           imageHeight: 100,
           imageAlt: 'First toss',
           confirmButtonText: 'OK',
+          customClass: {
+            confirmButton: 'btn btn-flat-primary m-3 p-4 text-center btn-md', // Apply Bootstrap classes directly to the button
+          },
+
           didOpen: () => {
             const confirmButton = Swal.getConfirmButton();
             confirmButton.style.backgroundColor = '#618264';
@@ -100,7 +106,6 @@ export default class extends Controller {
           }
         });
       }, 15000);
-
 
       new mapboxgl.Marker(customMarker)
         .setLngLat(coordinates)

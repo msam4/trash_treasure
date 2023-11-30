@@ -250,7 +250,6 @@ puts "trash_bin11 -petbottle in place3 - meguro Station created"
 # )
 # puts "trash_bin13 -petbottle in place4 - lewagon created"
 
-
 place5 = Place.create!(
   user: User.all.sample,
   name: "Omotesando, Harajuku",

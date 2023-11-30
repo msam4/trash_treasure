@@ -77,7 +77,34 @@ export default class extends Controller {
         this.renderDirection(this.position, coordinates);
       });
 
+      // Set a timeout to display the custom alert after 10 seconds (adjust the time as needed)
+      setTimeout(() => {
+        Swal.fire({
+          title: 'You have arrived!',
+          text: 'Feel free to throw away your trash now 🥳',
+          icon: 'success',
+          confirmButtonText: 'OK',
+          didOpen: () => {
+            const confirmButton = Swal.getConfirmButton();
+            confirmButton.style.backgroundColor = '#618264';
+            confirmButton.style.color = '#fff';
 
+            confirmButton.addEventListener('click', () => {
+              Swal.fire({
+                title: 'Toss created!',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                didOpen: () => {
+                  const confirmButton = Swal.getConfirmButton();
+                  confirmButton.style.backgroundColor = '#618264';
+                  confirmButton.style.color = '#fff';
+                },
+              });
+            });
+          },
+        });
+      }, 10000);
+      
       new mapboxgl.Marker(customMarker)
         .setLngLat(coordinates)
         .addTo(this.map);

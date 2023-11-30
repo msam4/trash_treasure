@@ -191,16 +191,12 @@ puts "trash_bin8 -petbottle in place2 - osaki Station created"
 
 place3 = Place.create!(
   user: User.all.sample,
-  name: "Meguro Station",
+  name: "Meguro JR Station",
   latitude: 35.6340161024763,
   longitude:  139.71554439283088,
-  description: "platform inside",
+  description: "near cart 9-12, near NewDays and the exit to Metro Station in the platform",
 )
 puts "place3 - meguro Station created"
-file = URI.open("https://i.ibb.co/rmzdZdb/meguro.jpg")
-place3.photos.attach(io: file, filename: "place4.png", content_type: "image/png")
-place3.save
-puts "place3 photo uploaded"
 
 
 bin9 = TrashBin.create!(
@@ -253,7 +249,6 @@ puts "trash_bin11 -petbottle in place3 - meguro Station created"
 #   place: place4,
 # )
 # puts "trash_bin13 -petbottle in place4 - lewagon created"
-
 
 place5 = Place.create!(
   user: User.all.sample,
@@ -501,3 +496,115 @@ data["features"].each do |feature|
 end
 
 puts "Now, the real bins seeds finished "
+
+puts "extra bin * 2 for burnables"
+
+newburnableplace1 = Place.find_or_create_by(latitude: 35.60862862905053) do |p|
+  p.name = "自由が丘1丁目9-8"
+  p.longitude = 139.67420406029152
+  p.description = "〒152-0035 東京都目黒区自由が丘１丁目９−８"
+  p.user = User.all.sample
+end
+
+bin20 = TrashBin.create!(
+  user: User.all.sample,
+  category: "burnables",
+  capacity: 30,
+  place: newburnableplace1,
+)
+
+newburnableplace2 = Place.find_or_create_by(latitude: 35.62073772791616) do |p|
+  p.name = "武蔵小山駅ビル"
+  p.longitude = 139.70446838384493
+  p.description = "〒142-0062 東京都品川区小山３丁目４−８ 武蔵小山駅ビル"
+  p.user = User.all.sample
+end
+
+bin21 = TrashBin.create!(
+  user: User.all.sample,
+  category: "burnables",
+  capacity: 30,
+  place: newburnableplace2,
+)
+
+puts "extra bin * 2 for inburnables"
+
+newinburnableplace1 = Place.find_or_create_by(latitude: 35.66548689285389) do |p|
+  p.name = "渋谷区神宮前6丁目17"
+  p.longitude = 139.703164017791
+  p.description = "〒150-0001 東京都渋谷区神宮前6丁目17"
+  p.user = User.all.sample
+end
+
+newinburnableplace2 = Place.find_or_create_by(latitude: 35.66707630082036) do |p|
+  p.name = "港区赤坂1丁目12-32"
+  p.longitude = 139.73973927116407
+  p.description = "〒107-6090 東京都港区赤坂1丁目12-32 アーク森ビル"
+  p.user = User.all.sample
+end
+
+bin30 = TrashBin.create!(
+  user: User.all.sample,
+  category: "non-burnables",
+  capacity: 30,
+  place: newinburnableplace1,
+)
+
+bin31 = TrashBin.create!(
+  user: User.all.sample,
+  category: "non-burnables",
+  capacity: 30,
+  place: newinburnableplace2,
+)
+
+uenostation = Place.find_or_create_by(latitude: 35.71416907756494) do |p|
+  p.name = "JR Ueno Station"
+  p.longitude = 139.7773727667071
+  p.description = "in front of the Central Exit"
+  p.user = User.all.sample
+end
+
+bin40 = TrashBin.create!(
+  user: User.all.sample,
+  category: "burnables",
+  capacity: 30,
+  place: uenostation,
+)
+
+
+bin41 = TrashBin.create!(
+  user: User.all.sample,
+  category: "plastic",
+  capacity: 30,
+  place: uenostation,
+)
+
+bin42 = TrashBin.create!(
+  user: User.all.sample,
+  category: "paper",
+  capacity: 30,
+  place: uenostation,
+)
+
+
+bin43 = TrashBin.create!(
+  user: User.all.sample,
+  category: "PET bottle",
+  capacity: 30,
+  place: uenostation,
+)
+
+
+bin44 = TrashBin.create!(
+  user: User.all.sample,
+  category: "can",
+  capacity: 30,
+  place: uenostation,
+)
+
+bin45 = TrashBin.create!(
+  user: User.all.sample,
+  category: "glass",
+  capacity: 30,
+  place: uenostation,
+)

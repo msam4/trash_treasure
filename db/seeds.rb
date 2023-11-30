@@ -560,7 +560,7 @@ bin31 = TrashBin.create!(
 uenostation = Place.find_or_create_by(latitude: 35.71416907756494) do |p|
   p.name = "JR Ueno Station"
   p.longitude = 139.7773727667071
-  p.description = "7-chōme-1-1 Ueno, Taito City, Tokyo 110-0005"
+  p.description = "in front of the Central Exit"
   p.user = User.all.sample
 end
 

@@ -56,12 +56,9 @@
     </div>
     <div class="row justify-content-center">
       <% if @bins.any? %>
-        <a class="btn btn-flat-primary btn-lg m-3" style="width:70%;" href="<%= update_form_place_path(@place, bin_id: @bins.first.id) %>">
-          Arrived
-          <%= link_to(:back, class: "btn btn-flat-secondary btn-lg m-3", style: "width:70%; color: #618264; border: 2px solid #618264;") do %>
-            Back to Map
-          <% end %>
-        </a>
+        <%= link_to(:back, class: "btn btn-flat-primary btn-lg m-3", style: "width:70%;") do %>
+          Back to Map
+        <% end %>
       <% else %>
         <a class="btn btn-flat-primary btn-lg m-3" style="width:55%;" href="<%= root_path %>">
           <i class="fa-solid fa-compass"></i> Home

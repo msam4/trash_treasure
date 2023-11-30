@@ -1,8 +1,19 @@
 <% if @no_bins_nearby %>
   <script>
-    alert('Please note: Trash bins are not within 10km radius of you.');
+    Swal.fire({
+      title: 'No Bins Nearby',
+      text: 'Please note: Trash bins are not within a 10km radius of you.',
+      icon: 'error', // Use 'error' for a failure icon
+      confirmButtonText: 'Take me to the nearest bin',
+      didOpen: () => {
+            const confirmButton = Swal.getConfirmButton();
+            confirmButton.style.backgroundColor = '#618264';
+            confirmButton.style.color = '#fff';
+      },
+    });
   </script>
 <% end %>
+
 <div class= "container">
   <!-- Bootstrap Spinner as the Loading Indicator -->
   <div class="text-center">

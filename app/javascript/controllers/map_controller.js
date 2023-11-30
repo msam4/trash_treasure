@@ -81,30 +81,27 @@ export default class extends Controller {
       setTimeout(() => {
         Swal.fire({
           title: 'You have arrived!',
-          text: 'Feel free to throw away your trash now 🥳',
-          icon: 'success',
+          html: '<p>Toss created! 🥳</p><p>You have earned your first badge!</p>',
+          imageUrl: '/assets/badges/first-toss.png',
+          imageWidth: 100,
+          imageHeight: 100,
+          imageAlt: 'First toss',
           confirmButtonText: 'OK',
           didOpen: () => {
             const confirmButton = Swal.getConfirmButton();
             confirmButton.style.backgroundColor = '#618264';
             confirmButton.style.color = '#fff';
-
-            confirmButton.addEventListener('click', () => {
-              Swal.fire({
-                title: 'Toss created!',
-                icon: 'success',
-                confirmButtonText: 'OK',
-                didOpen: () => {
-                  const confirmButton = Swal.getConfirmButton();
-                  confirmButton.style.backgroundColor = '#618264';
-                  confirmButton.style.color = '#fff';
-                },
-              });
-            });
+            confirmButton.style.borderRadius = '50px';
+            confirmButton.style.padding = '15px 30px';
           },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = '/';
+          }
         });
-      }, 10000);
-      
+      }, 15000);
+
+
       new mapboxgl.Marker(customMarker)
         .setLngLat(coordinates)
         .addTo(this.map);

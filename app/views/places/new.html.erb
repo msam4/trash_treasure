@@ -28,12 +28,14 @@
             <%= f.input :description, label_html: { style: 'font-weight: bold;' }, input_html: { data: { geolocation_target: "desInput" } }  %>
             <br>
             <%= f.input :photos, as: :file, label_html: { style: 'font-weight: bold;' }, input_html: { accept: 'image/*', multiple: true } %>
-            <div class="d-flex justify-content-center mt-4">
+            <div class="d-grid gap-2 col-7 mx-auto">
               <%= f.submit "Send", class: "btn-flat-primary", style: "color: white" %>
             </div>
           </div>
         </div>
       <% end %>
     </div>
+    <br>
+    <br>
   </div>
 </div>

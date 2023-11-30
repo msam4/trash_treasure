@@ -14,7 +14,7 @@ class TrashBinsController < ApplicationController
     @bin.user = current_user
     @bin.place = @place
     if @bin.save
-      case current_user.trash_bin.count
+      case current_user.trash_bins.count
       when 1
         redirect_to place_path(@place), notice: "Bin was successfully added. And you received the Add a new bin badge! Do you want to add another?"
       else

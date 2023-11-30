@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get "/filter", to: 'places#filter'
 
+  get "/my_badges", to: 'pages#my_badges', as: "badges"
+
   # Defines the root path route ("/")
   # root "posts#index"
   resources :places, only: [:index, :show, :new, :create] do

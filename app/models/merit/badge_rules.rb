@@ -26,49 +26,46 @@ module Merit
       # Find badge by badge_id, badge_id takes presidence over badge
       # grant_on 'users#create', badge_id: 7, badge: 'just-registered', to: :itself
 
-      grant_on 'devise/registrations#create', badge: 'just-registered' do
+      grant_on 'devise/registrations#create', badge: 'Registered' do
         true
       end
 
       # When the user arrives a bin"
-      grant_on 'tosses#create', badge: 'first-toss',
+      grant_on 'tosses#create', badge: 'Toss first trash',
         to: :user do |toss|
-        # Add condition for arriving at a bin
         toss.user.tosses.count >= 1
       end
 
-      grant_on 'tosses#create', badge: 'toss-5-trashes',
+      grant_on 'tosses#create', badge: 'Toss 5 pieces',
         to: :user do |toss|
-        # Add condition for arriving at 5 places
         toss.user.tosses.count >= 5
       end
 
-      grant_on 'tosses#create', badge: 'toss-10-trashes',
+      grant_on 'tosses#create', badge: 'Toss 10 pieces',
         to: :user do |toss|
-        # Add condition for arriving at 10 places
         toss.user.tosses.count >= 10
       end
 
       # When the user adds a new place
-      grant_on 'places#create', badge: 'add-a-new-place',
+      grant_on 'places#create', badge: 'Add a new place',
         to: :user do |place|
         # Add condition for adding a new place
           place.user.places.count >= 1
       end
 
-      grant_on 'places#create', badge: 'create-5-new-places',
+      grant_on 'places#create', badge: 'Add 5 new places',
         to: :user do |place|
         # Add condition for creating 5 new places
         place.user.places.count >= 5
       end
 
-      grant_on 'places#create', badge: 'create-10-new-places',
+      grant_on 'places#create', badge: 'Add 10 new places',
         to: :user do |place|
         # Add condition for creating 10 new places
         place.user.places.count >= 10
       end
 
-      grant_on 'trash_bins#create', badge: 'add-a-new-bin',
+      grant_on 'trash_bins#create', badge: 'Add a new bin',
         to: :user do |bin|
         # Add condition for adding a new bin
         bin.user.trash_bin.count >= 1

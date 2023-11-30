@@ -44,37 +44,38 @@ export default class extends Controller {
     document.getElementById('loadingIndicator').style.display = 'none';
   }
 
-addMarkers() {
-  console.log("Add markers")
-  this.markersValue.forEach(marker => {
-    const customMarker = document.createElement("div");
-    customMarker.innerHTML = marker.marker_html;
+  addMarkers() {
+    console.log("Add markers")
+    this.markersValue.forEach(marker => {
+      const customMarker = document.createElement("div");
+      customMarker.innerHTML = marker.marker_html;
 
-    const coordinates = [marker.lng, marker.lat];
+      const coordinates = [marker.lng, marker.lat];
 
-    const popupContainer = document.createElement("div");
-    popupContainer.className = "custom-popup";
-    popupContainer.innerHTML = `
-      <div style="
-        position: fixed;
-        bottom: 0;
-        text-align: center;
-        width: 100%;
-        background-color: white;
-        padding: 10px;
-      ">
-        <h1 style="font-size: 24px;">${marker.info_window_html}</h1>
-      </div>
-    `;
+      const popupContainer = document.createElement("div");
+      popupContainer.className = "custom-popup";
+      popupContainer.innerHTML = `
+        <div style="
+          position: fixed;
+          bottom: 0;
+          text-align: center;
+          width: 100%;
+          background-color: white;
+          padding: 10px;
+        ">
+          <h1 style="font-size: 24px;">${marker.info_window_html}</h1>
+        </div>
+      `;
 
-    customMarker.addEventListener("click", (event) => {
-      document.querySelectorAll(".custom-popup").forEach(popup => popup.remove());
+      customMarker.addEventListener("click", (event) => {
+        document.querySelectorAll(".custom-popup").forEach(popup => popup.remove());
 
-      this.map.getContainer().appendChild(popupContainer);
+        this.map.getContainer().appendChild(popupContainer);
 
-      event.stopPropagation();
+        event.stopPropagation();
 
-      this.renderDirection(this.position, coordinates);
+        this.renderDirection(this.position, coordinates);
+      });
 
       // Set a timeout to display the custom alert after 10 seconds (adjust the time as needed)
       setTimeout(() => {
@@ -103,14 +104,12 @@ addMarkers() {
           },
         });
       }, 10000);
+      
+      new mapboxgl.Marker(customMarker)
+        .setLngLat(coordinates)
+        .addTo(this.map);
     });
-
-
-    new mapboxgl.Marker(customMarker)
-      .setLngLat(coordinates)
-      .addTo(this.map);
-  });
-}
+  }
 
   fitMapToMarkers() {
     console.log("Fit markers")
@@ -190,6 +189,7 @@ addMarkers() {
         accessToken: mapboxgl.accessToken,
         routePadding: 50,
         profile: "mapbox/walking",
+        interactive: false,
         controls: {
           inputs: false,
           instructions: false,

@@ -1,0 +1,12 @@
+<h1 style="text-align: center; margin: 10px; padding: 10px;">My Badges <i class="fa-solid fa-ribbon"></i></h1>
+<div class="container badge-grid">
+  <% current_user.badges.each do |badge| %>
+    <div class="card card-product" style="width: 10rem; height: 10rem;">
+      <%= image_tag badge.custom_fields[:image], alt: "badge icon", class: "card-img-top", style: "padding-top: 10px;" %>
+      <div class="card-body card-product-infos">
+        <h2 class="card-title"><%= badge.name %></h2>
+        <p class="card-text"><%= badge.description %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

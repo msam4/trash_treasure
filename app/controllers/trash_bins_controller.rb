@@ -11,9 +11,15 @@ class TrashBinsController < ApplicationController
   def create
     @place = Place.find(params[:place_id])
     @bin = TrashBin.new(bin_params)
+    @bin.user = current_user
     @bin.place = @place
     if @bin.save
+      case current_user.trash_bin.count
+      when 1
+        redirect_to place_path(@place), notice: "Bin was successfully added. And you received the Add a new bin badge! Do you want to add another?"
+      else
       redirect_to place_path(@place), notice: "Bin was successfully added. Do you want to add another?"
+      end
     else
       render "places/show", status: :unprocessable_entity
     end

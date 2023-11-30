@@ -1,16 +1,3 @@
-<!--
-<div class="container">
-  <% current_user.badges.each do |badge| %>
-    <div class="card-product">
-      <img src="<%= badge.custom_fields[:image] %>" alt="<%= badge.name %> icon" />
-      <div class="card-product-infos">
-        <h2><%= badge.name %></h2>
-        <p><%= badge.description %></p>
-      </div>
-    </div>
-  <% end %>
-</div>
--->
 <h1 style="text-align: center; margin: 10px; padding: 10px;">My Badges <i class="fa-solid fa-ribbon"></i></h1>
 <div class="container badge-grid">
   <% current_user.badges.each do |badge| %>

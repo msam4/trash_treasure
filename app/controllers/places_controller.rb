@@ -98,7 +98,16 @@ class PlacesController < ApplicationController
     @place = Place.new(place_params)
     @place.user = current_user
     if @place.save
-      redirect_to place_path(@place), notice: "Place was successfully added."
+      case current_user.places.count
+      when 1
+        redirect_to place_path(@place), notice: "Place was successfully added. And you received the Add a new place badge!"
+      when 5
+        redirect_to place_path(@place), notice: "Place was successfully added. And you received the Add 5 new places badge!"
+      when 10
+        redirect_to place_path(@place), notice: "Place was successfully added. And you received the Add 10 new places badge!"
+      else
+        redirect_to place_path(@place), notice: "Place was successfully added."
+      end
     else
       render :new, status: :unprocessable_entity
     end

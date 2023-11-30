@@ -8,6 +8,7 @@
     </div>
     <div class="col-4 text-end">
       <% if user_signed_in? %>
+        <%= link_to "My Badges", "/my_badges" %>
         <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
           <i class="fa-solid fa-right-from-bracket"></i>
         <% end%>

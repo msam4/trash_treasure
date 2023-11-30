@@ -1,12 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-bottom">
   <div class="container-fluid row w-100">
-    <div class="col-4"></div>
-    <div class="col-4 text-center">
-      <%= link_to root_path do %>
-        <i class="fa-solid fa-house" style="color: #618264;"></i>
-      <% end %>
-    </div>
-    <div class="col-4 text-end">
+    <div class="col-4 text-start">
       <% if user_signed_in? %>
         <div class="btn-group dropup">
           <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false", style="background-color: #618264;">
@@ -19,10 +13,14 @@
           </ul>
         </div>
       <% else %>
-        <%= link_to new_user_session_path do %>
-          <i class="fa-solid fa-right-to-bracket" style="color: #618264;"></i>
-        <% end %>
+        <%= link_to "Login", new_user_session_path, class: "btn btn-flat m-2 primary",style: "color: #ffffff; text-decoration: none;" %>
       <% end %>
     </div>
+    <div class="col-4 text-center">
+      <%= link_to root_path do %>
+        <i class="fa-solid fa-house" style="color: #618264;"></i>
+      <% end %>
+    </div>
+    <div class="col-4"></div>
   </div>
 </div>

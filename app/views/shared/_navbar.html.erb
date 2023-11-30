@@ -1,22 +1,26 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-bottom">
   <div class="container-fluid row w-100">
-    <div class="col-4"></div>
+    <div class="col-4 text-start">
+      <% if user_signed_in? %>
+        <div class="btn-group dropup">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false", style="background-color: #618264;">
+            Menu
+          </button>
+          <ul class="dropdown-menu">
+            <!-- Dropdown menu links -->
+            <li><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item",style: "color: #618264; text-decoration: none;" %></li>
+            <li><%= link_to "My Badges", "/my_badges", class: "dropdown-item",style: "color: #618264; text-decoration: none;" %></li>
+          </ul>
+        </div>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "btn btn-flat m-2 primary",style: "color: #ffffff; text-decoration: none;" %>
+      <% end %>
+    </div>
     <div class="col-4 text-center">
       <%= link_to root_path do %>
-        <i class="fa-solid fa-house"></i>
+        <i class="fa-solid fa-house" style="color: #618264;"></i>
       <% end %>
     </div>
-    <div class="col-4 text-end">
-      <% if user_signed_in? %>
-        <%= link_to "My Badges", "/my_badges" %>
-        <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
-          <i class="fa-solid fa-right-from-bracket"></i>
-        <% end%>
-      <% else %>
-        <%= link_to new_user_session_path do %>
-          <i class="fa-solid fa-right-to-bracket"></i>
-        <% end %>
-      <% end %>
-    </div>
+    <div class="col-4"></div>
   </div>
 </div>

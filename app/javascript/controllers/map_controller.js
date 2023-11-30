@@ -1,5 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl'
+import Swal from 'sweetalert2';
+window.Swal = Swal;
 // import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/gl-directions';
 
 export default class extends Controller {
@@ -104,7 +106,7 @@ export default class extends Controller {
           },
         });
       }, 10000);
-      
+
       new mapboxgl.Marker(customMarker)
         .setLngLat(coordinates)
         .addTo(this.map);

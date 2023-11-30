@@ -11,8 +11,9 @@ class PlacesController < ApplicationController
         key = Item::CATEGORY.key(category)
         key if key
       end
-      @places = Place.joins(:trash_bins).where(trash_bins: { category: @checked }).group("places.id").having("COUNT(DISTINCT places.trash_bins.category)=?",@checked.length)
-      #@places = Place.all.select{|place| @checked.all?{|category| mapped_list(place).include?(category)}}
+      # @places = Place.joins(:trash_bins).where(trash_bins: { category: @checked }).group("places.id").having("COUNT(DISTINCT places.trash_bins.category)=?",@checked.length)
+      places = Place.all.select{|place| @checked.all?{|category| mapped_list(place).include?(category)}}
+      @places = Place.where(id: places.map(&:id))
       #After the checked example if you filtered only PET bottle and can
       # ["PET bottle", "can"]
       if params[:filter][:latitude].present? && params[:filter][:longitude].present?

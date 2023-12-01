@@ -5,6 +5,7 @@
       <br>
     </h1>
     <div class="d-flex card-text justify-content-center m-4 position-relative ">
+      <br>
       <h3>
         <%= place.description %>
       </h3>
@@ -12,7 +13,7 @@
     <div class="d-flex flex-row-reverse">
       <p class="mb-2" style="margin-right: 30px;">
         <% if  place.trash_bins.any? %>
-          <a href="<%= update_form_place_path(place, bin_id: place.trash_bins.first.id) %>">
+          <a href="<%= update_form_place_path(place, bin_id: place.trash_bins.first.id) %>" class="link-secondary link-underline-opacity-0">
             Report <i class="fa-regular fa-message"></i></a>
         <%end%>
       </p>

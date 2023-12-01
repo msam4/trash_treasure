@@ -152,7 +152,7 @@ place2 = Place.create!(
   name: "Osaki Station",
   latitude: 35.6218522661428,
   longitude: 139.72883214608052,
-  description: "In front of the north ticket gate concourse toilet",
+  description: "In front of the north ticket gate concourse toilet"
 )
 puts "place2 - Osaki Station Station created"
 file = URI.open("https://i.ibb.co/988Vc8n/oosaki.jpg")
@@ -194,7 +194,8 @@ place3 = Place.create!(
   name: "Meguro JR Station",
   latitude: 35.6340161024763,
   longitude:  139.71554439283088,
-  description: "near cart 9-12, near NewDays and the exit to Metro Station in the platform",
+  description: "-near the vending machine at the west exit
+   -near cart 9-12, near NewDays and the exit to Metro Station in the platform",
 )
 puts "place3 - meguro Station created"
 

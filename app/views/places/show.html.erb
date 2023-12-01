@@ -1,74 +1,71 @@
-<!-- app/views/places/show.html.erb -->
 <div class="container">
-  <div class="overflow-auto bg-white">
-    <h1 class="text-center p-1" style="font-size:48px;">
-      <strong><u>
-          <%=@place.name %>
-        </strong></u>
-    </h1>
-    <div class="row justify-content-center m-2">
-      <% @bins.each do |bin|%>
-        <% cate = bin.category %>
-        <%= image_tag "pet_bottle.png", style: 'width: 30%;margin:5px;' if cate == "PET bottle" %>
-        <%= image_tag "can.png",style: 'width: 30%;margin:5px;' if cate == "can"  %>
-        <%= image_tag "glass.png",style: 'width: 30%;margin:5px;' if cate == "glass"  %>
-        <%= image_tag "burnables.png", style: 'width: 30%;margin:5px;' if cate == "burnables"  %>
-        <%= image_tag "non_burnables.png",style: 'width: 30%;margin:5px;' if cate == "non-burnables"  %>
-        <%= image_tag "paper.png", style: 'width: 30%;margin:5px;' if cate == "paper"  %>
-        <%= image_tag "plastic.png", style: 'width: 30%;margin:5px;' if cate == "plastic"  %>
-      <% end %>
-    </div>
-    <div class="text-center">
-      <%= link_to new_place_trash_bin_path(@place), style: 'width: 10%;margin:5px;'  do %>
-        <%= image_tag "newbin.png",  style: 'width: 15%;margin:5px;' %>
-      <% end %>
-    </div>
-    <div class="d-flex justify-content-center p-1 mt-4 position-relative">
-      <div class="row row-cols-auto">
-        <% if @place.photos.any? %>
-          <% @place.photos.each do |photo| %>
-            <div class="col d-flex justify-content-center align-items-center mx-auto mb-3">
-              <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill %>
-            </div>
+  <h1 class="text-center p-1" style="font-size:48px;">
+    <strong><u>
+        <%=@place.name %>
+      </strong></u>
+  </h1>
+  <div class="row justify-content-center m-2">
+    <% @bins.each do |bin|%>
+      <% cate = bin.category %>
+      <%= image_tag "pet_bottle.png", style: 'width: 30%;margin:5px;' if cate == "PET bottle" %>
+      <%= image_tag "can.png",style: 'width: 30%;margin:5px;' if cate == "can"  %>
+      <%= image_tag "glass.png",style: 'width: 30%;margin:5px;' if cate == "glass"  %>
+      <%= image_tag "burnables.png", style: 'width: 30%;margin:5px;' if cate == "burnables"  %>
+      <%= image_tag "non_burnables.png",style: 'width: 30%;margin:5px;' if cate == "non-burnables"  %>
+      <%= image_tag "paper.png", style: 'width: 30%;margin:5px;' if cate == "paper"  %>
+      <%= image_tag "plastic.png", style: 'width: 30%;margin:5px;' if cate == "plastic"  %>
+    <% end %>
+  </div>
+  <div class="text-center">
+    <%= link_to new_place_trash_bin_path(@place), style: 'width: 10%;margin:5px;'  do %>
+      <%= image_tag "newbin.png",  style: 'width: 15%;margin:5px;' %>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-center p-1 mt-4 position-relative">
+    <div class="row row-cols-auto">
+      <% if @place.photos.any? %>
+        <% @place.photos.each do |photo| %>
+          <div class="col d-flex justify-content-center align-items-center mx-auto mb-3">
+            <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill %>
+          </div>
+        <% end %>
+        <div class="position-absolute" style="top: 0%; left: 85%; transform: translate(-50%, -50%);">
+          <%= link_to new_photo_place_path(@place) do %>
+            <%= image_tag "addphotos.png", style: 'width: 110%;', alt: "Add photos?" %>
           <% end %>
-          <div class="position-absolute" style="top: 0%; left: 85%; transform: translate(-50%, -50%);">
-            <%= link_to new_photo_place_path(@place) do %>
-              <%= image_tag "addphotos.png", style: 'width: 110%;', alt: "Add photos?" %>
-            <% end %>
-          </div>
-        <% else %>
-          <!-- Centering when there are no photos -->
-          <div class="text-center">
-            <%= link_to new_photo_place_path(@place) do %>
-              <%= image_tag "addphotos.png", style: 'width: 50%;', alt: "Add photos?" %>
-            <% end %>
-            <br>
-            <h3 class="text-muted">There is no photo available yet.</h3>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="d-flex card-text justify-content-center m-4 position-relative">
-      <div class="position-absolute" style="top: 0%; left: 95%; transform: translate(-50%, -50%);">
-        <% if @bins.any? %>
-          <a class="btn btn-lg m-3" style="width:50%;" href="<%= update_form_place_path(@place, bin_id: @bins.first.id) %>"><i class="fa-regular fa-message"></i></a>
-        <% end %>
-      </div>
-      <h3>
-        <%=@place.description %>
-      </h3>
-      <br>
-    </div>
-    <div class="d-grid gap-2 col-9 mx-auto">
-      <% if @bins.any? %>
-        <%= link_to(:back, class: "btn btn-flat-primary m-3 p-4 btn-md") do %>
-          Back to Map
-        <% end %>
+        </div>
       <% else %>
-        <a class="btn btn-flat-primary btn-lg m-3 p-4 btn-md" href="<%= root_path %>">
-          <i class="fa-solid fa-compass"></i> Home
-        </a>
+        <!-- Centering when there are no photos -->
+        <div class="text-center">
+          <%= link_to new_photo_place_path(@place) do %>
+            <%= image_tag "addphotos.png", style: 'width: 50%;', alt: "Add photos?" %>
+          <% end %>
+          <br>
+          <h3 class="text-muted">There is no photo available yet.</h3>
+        </div>
       <% end %>
     </div>
+  </div>
+  <div class="d-flex card-text justify-content-center m-4 position-relative">
+    <div class="position-absolute" style="top: 0%; left: 95%; transform: translate(-50%, -50%);">
+      <% if @bins.any? %>
+        <a class="btn btn-lg m-3" style="width:50%;" href="<%= update_form_place_path(@place, bin_id: @bins.first.id) %>"><i class="fa-regular fa-message"></i></a>
+      <% end %>
+    </div>
+    <h3>
+      <%=@place.description %>
+    </h3>
+    <br>
+  </div>
+  <div class="d-grid gap-2 col-7 mx-auto">
+    <% if @bins.any? %>
+      <%= link_to(:back, class: "btn btn-flat-primary m-3 p-4 btn-md") do %>
+        Back to Map
+      <% end %>
+    <% else %>
+      <a class="btn btn-flat-primary btn-lg m-3 p-4 btn-md" href="<%= root_path %>">
+        <i class="fa-solid fa-compass"></i> Home
+      </a>
+    <% end %>
   </div>
 </div>

@@ -194,18 +194,17 @@ place3 = Place.create!(
   name: "Meguro JR Station",
   latitude: 35.6340161024763,
   longitude:  139.71554439283088,
-  description: "-near the vending machine at the west exit
-   -near cart 9-12, near NewDays and the exit to Metro Station in the platform",
+  description: "-near the vending machine at the west exit",
 )
 puts "place3 - meguro Station created"
 
 
-bin9 = TrashBin.create!(
-  user: User.all.sample,
-  category: "paper",
-  capacity: 30,
-  place: place3,
-)
+# bin9 = TrashBin.create!(
+#   user: User.all.sample,
+#   category: "paper",
+#   capacity: 30,
+#   place: place3,
+# )
 puts "trash_bin9 -paper in place3 -  meguro Station created"
 bin10 = TrashBin.create!(
   user: User.all.sample,

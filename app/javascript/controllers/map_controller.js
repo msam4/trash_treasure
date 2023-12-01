@@ -83,7 +83,7 @@ export default class extends Controller {
       setTimeout(() => {
         Swal.fire({
           title: 'You have arrived!',
-          html: '<p>Toss created! 🥳</p><p>You have earned your first badge!</p>',
+          html: '<p>You toss away your trash! 🥳</p><p>You have earned your first badge!</p>',
           imageUrl: 'https://raw.githubusercontent.com/msam4/trash_treasure/1162c51a3db196942ac4edeb3d22b8373de1c592/app/assets/images/badges/first-toss.png',
           imageWidth: 100,
           imageHeight: 100,

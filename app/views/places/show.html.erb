@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
   <h1 class="text-center p-1" style="font-size:48px;">
     <strong><u>
         <%=@place.name %>
@@ -63,14 +63,8 @@
     <br>
   </div>
   <div class="d-grid gap-2 col-7 mx-auto">
-    <% if @bins.any? %>
-      <%= link_to(:back, class: "btn btn-flat-primary m-3 p-4 btn-md") do %>
-        Back to Map
-      <% end %>
-    <% else %>
-      <a class="btn btn-flat-primary btn-lg m-3 p-4 btn-md" href="<%= root_path %>">
-        <i class="fa-solid fa-compass"></i> Home
-      </a>
+    <%= link_to(:back, class: "btn btn-flat-primary m-3 p-4 btn-md") do %>
+      Back to Map
     <% end %>
   </div>
 </div>

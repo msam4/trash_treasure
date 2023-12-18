@@ -4,15 +4,16 @@ Traveling in Japan is fun. You are visiting all the famous spots in Tokyo and yo
 
 Screenshots:
 <br>
-![IMG_7324](https://github.com/msam4/trash_treasure/assets/137851066/be03ac77-f5e6-4db2-9c4d-5869c711c402)
+<img width="292" alt="homepage" src="https://github.com/msam4/trash_treasure/assets/137851066/be03ac77-f5e6-4db2-9c4d-5869c711c402" >
 <br>
-![IMG_7325](https://github.com/msam4/trash_treasure/assets/137851066/c091b959-6ef3-4f7d-b513-b8f5ebf15416)
+<img width="292" alt="Search" src="https://github.com/msam4/trash_treasure/assets/137851066/c091b959-6ef3-4f7d-b513-b8f5ebf15416" >
 <br>
-![IMG_7327](https://github.com/msam4/trash_treasure/assets/137851066/06c47e8a-767f-47ad-9f23-3a9e39f41ee1)
+<img width="292" alt="Find the nearest trash bin location" src="https://github.com/msam4/trash_treasure/assets/137851066/06c47e8a-767f-47ad-9f23-3a9e39f41ee1" >
 <br>
-![IMG_7328](https://github.com/msam4/trash_treasure/assets/137851066/38c3f9ae-d176-4fa7-aeff-e44dafa23e70)
+<img width="292" alt="Info about the trash location" src="https://github.com/msam4/trash_treasure/assets/137851066/38c3f9ae-d176-4fa7-aeff-e44dafa23e70" >
 <br>
-![IMG_7330](https://github.com/msam4/trash_treasure/assets/137851066/05ab0457-60e1-42ae-8217-4b376398e159)
+<img width="292" alt="Arrive at the trash bin!" src="https://github.com/msam4/trash_treasure/assets/137851066/05ab0457-60e1-42ae-8217-4b376398e159" >
+<br>
 
 
 <br>

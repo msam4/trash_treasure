@@ -109,10 +109,10 @@ place1 = Place.create!(
   description: "Near the central entrance of Marunouchi Underground",
 )
 puts "place1 - Tokyo Station created"
-file = URI.open("https://i.ibb.co/T2ywk5P/tokyo.jpg")
-place1.photos.attach(io: file, filename: "place1.png", content_type: "image/png")
-place1.save
-puts "place1 photo uploaded"
+# file = URI.open("https://i.ibb.co/T2ywk5P/tokyo.jpg")
+# place1.photos.attach(io: file, filename: "place1.png", content_type: "image/png")
+# place1.save
+# puts "place1 photo uploaded"
 
 bin1 = TrashBin.create!(
   user: User.all.sample,

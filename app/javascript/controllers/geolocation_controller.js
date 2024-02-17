@@ -26,7 +26,7 @@ export default class extends Controller {
       return;
     }
 
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2dna2R1a2UiLCJhIjoiY2xvNTVpamMxMDZ1bjJ2bng4YTJmeHgxZCJ9.UdCeZ5cXHGpJTyP5XeaPFw';
+    mapboxgl.accessToken = this.apiKeyValue;
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v12?optimize=true',
